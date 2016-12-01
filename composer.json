@@ -1,26 +1,39 @@
 {
-	"name": "dnaber/wp-provisioner",
-	"description": "Install and configure WordPress programmatic and continuable",
-	"type": "library",
-	"license": "MIT",
-	"autoload": {
-		"psr-4": {
-			"WpProvision\\": "src/"
-		}
-	},
-	"bin": [
-		"bin/wp-provisioner"
-	],
-	"require": {
-		"symfony/console": "~2.7",
-		"symfony/process": "~2.1",
-		"inpsyde/wp-cli-site-url": "~1.0",
-		"wp-cli/wp-cli": "~0.23"
-	},
-	"suggest": {
-		"wecodemore/wpstarter": "Easily bootstrap whole site Composer packages for WordPress."
-	},
-	"require-dev": {
-		"inpsyde/monkery-test-case": "~1.1.0"
-	}
+    "name": "dhii/wp-provisioner",
+    "description": "An object-oriented wrapper for programmatic installation of WordPress using WP CLI",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dhii Team",
+            "email": "development@dhii.co",
+            "role": "Continuator"
+        },
+        {
+            "name": "David Naber",
+            "email": "kontakt@dnaber.de",
+            "role": "Founder"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/console": "~2.7",
+        "symfony/process": "~2.1",
+        "inpsyde/wp-cli-site-url": "~1.0",
+        "wp-cli/wp-cli": "~0.23"
+    },
+    "require-dev": {
+        "dhii/php-cs-fixer-config": "dev-php-5.3",
+        "phpunit/phpunit": "4.*",
+        "codeclimate/php-test-reporter": "dev-master",
+        "ptrofimov/xpmock": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WpProvision\\": "src/"
+        }
+    },
+    "bin": [
+        "bin/wp-provisioner"
+    ]
 }
