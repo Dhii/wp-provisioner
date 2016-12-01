@@ -1,5 +1,7 @@
 # WP Provisioner
 
+[![Join the chat at https://gitter.im/Dhii/wp-provisioner](https://badges.gitter.im/Dhii/wp-provisioner.svg)](https://gitter.im/Dhii/wp-provisioner?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 API to instantiate and manage your WordPress installation structure. 
 
 ## What & why
