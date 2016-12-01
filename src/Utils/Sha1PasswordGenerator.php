@@ -7,7 +7,7 @@ namespace WpProvision\Utils;
  *
  * @package WpProvision\Utils
  */
-class Sha1PasswordGenerator implements PasswordGenerator {
+class Sha1PasswordGenerator implements PasswordGeneratorInterface {
 
 	/**
 	 * @var int

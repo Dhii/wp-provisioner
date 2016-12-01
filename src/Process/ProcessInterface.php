@@ -10,7 +10,7 @@ namespace WpProvision\Process;
  * @see Symfony\Component\Process\Process
  * @package WpProvision\Process
  */
-interface Process {
+interface ProcessInterface {
 
 	/**
 	 * @param int|float|null $timeout The timeout in seconds

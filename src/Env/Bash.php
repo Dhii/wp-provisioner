@@ -10,17 +10,17 @@ use
  *
  * @package WpProvision\Env
  */
-class Bash implements Shell {
+class Bash implements ShellInterface {
 
 	/**
-	 * @var Process\ProcessBuilder
+	 * @var Process\ProcessBuilderInterface
 	 */
 	private $processBuilder;
 
 	/**
-	 * @param Process\ProcessBuilder $processBuilder
+	 * @param Process\ProcessBuilderInterface $processBuilder
 	 */
-	public function __construct( Process\ProcessBuilder $processBuilder ) {
+	public function __construct( Process\ProcessBuilderInterface $processBuilder ) {
 
 		$this->processBuilder = $processBuilder;
 	}

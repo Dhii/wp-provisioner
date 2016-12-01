@@ -10,4 +10,4 @@ namespace WpProvision\Command;
  *
  * @package WpProvision\Command
  */
-interface WpCliCommand extends BaseCommand {}
+interface WpCliCommandInterface extends BaseCommandInterface {}

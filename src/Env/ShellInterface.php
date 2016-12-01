@@ -7,7 +7,7 @@ namespace WpProvision\Env;
  *
  * @package WpProvision\Env
  */
-interface Shell {
+interface ShellInterface {
 
 	/**
 	 * @param $command

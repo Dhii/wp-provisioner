@@ -10,25 +10,25 @@ use
  *
  * @package WpProvision\Api
  */
-interface WpCommandProvider {
+interface WpCommandProviderInterface {
 
 	/**
-	 * @return Wp\Core
+	 * @return Wp\CoreInterface
 	 */
 	public function core();
 
 	/**
-	 * @return Wp\Plugin
+	 * @return Wp\PluginInterface
 	 */
 	public function plugin();
 
 	/**
-	 * @return Wp\Site
+	 * @return Wp\SiteInterface
 	 */
 	public function site();
 
 	/**
-	 * @return Wp\User
+	 * @return Wp\UserInterface
 	 */
 	public function user();
 }

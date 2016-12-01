@@ -11,14 +11,14 @@ namespace WpProvision\Process;
  *
  * @package WpProvision\Process
  */
-interface ProcessBuilder {
+interface ProcessBuilderInterface {
 
 	/**
 	 * @see Symfony\Component\Process\ProcessBuilder::create()
 	 *
 	 * @param array $arguments
 	 *
-	 * @return ProcessBuilder
+	 * @return ProcessBuilderInterface
 	 */
 	public static function create( array $arguments = [] );
 
@@ -34,7 +34,7 @@ interface ProcessBuilder {
 	/**
 	 * @see Symfony\Component\Process\ProcessBuilder::getProcess()
 	 *
-	 * @return Process
+	 * @return ProcessInterface
 	 *
 	 * @throws \LogicException In case no arguments have been provided
 	 */
@@ -45,7 +45,7 @@ interface ProcessBuilder {
 	 *
 	 * @param null|string $cwd The working directory
 	 *
-	 * @return ProcessBuilder
+	 * @return ProcessBuilderInterface
 	 */
 	public function setWorkingDirectory( $cwd );
 }

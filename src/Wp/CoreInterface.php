@@ -7,7 +7,7 @@ namespace WpProvision\Wp;
  *
  * @package WpProvision\Wp
  */
-interface Core {
+interface CoreInterface {
 
 	/**
 	 * @param bool $network If multisite is installed

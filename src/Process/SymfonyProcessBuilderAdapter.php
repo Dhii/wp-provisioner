@@ -15,4 +15,4 @@ use
  */
 class SymfonyProcessBuilderAdapter
 	extends SymfonyProcessBuilder
-	implements ProcessBuilder {}
+	implements ProcessBuilderInterface {}

@@ -20,15 +20,15 @@ class Provision extends SymfonyCommand\Command {
 	const OPTION_ISOLATION = 'isolation';
 
 	/**
-	 * @var Api\Versions
+	 * @var Api\VersionsInterface
 	 */
 	private $versions;
 
 	/**
-	 * @param Api\Versions $versions
+	 * @param Api\VersionsInterface $versions
 	 * @param string       $name
 	 */
-	public function __construct( Api\Versions $versions, $name = NULL ) {
+	public function __construct( Api\VersionsInterface $versions, $name = NULL ) {
 
 		$this->versions = $versions;
 		parent::__construct( $name );

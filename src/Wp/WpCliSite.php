@@ -13,29 +13,29 @@ use
  *
  * @package WpProvision\Wp
  */
-class WpCliSite implements Site {
+class WpCliSite implements SiteInterface {
 
 	/**
-	 * @var Command\WpCliCommand
+	 * @var Command\WpCliCommandInterface
 	 */
 	private $wp_cli;
 
 	/**
-	 * @var User
+	 * @var UserInterface
 	 */
 	private $user;
 
 	/**
-	 * @var Plugin
+	 * @var PluginInterface
 	 */
 	private $plugin;
 
 	/**
-	 * @param Command\WpCliCommand $wp_cli
-	 * @param User                 $user
-	 * @param Plugin               $plugin
+	 * @param Command\WpCliCommandInterface $wp_cli
+	 * @param UserInterface                 $user
+	 * @param PluginInterface               $plugin
 	 */
-	public function __construct( Command\WpCliCommand $wp_cli, User $user, Plugin $plugin ) {
+	public function __construct( Command\WpCliCommandInterface $wp_cli, UserInterface $user, PluginInterface $plugin ) {
 
 		$this->wp_cli = $wp_cli;
 		$this->user   = $user;

@@ -13,17 +13,17 @@ use
  *
  * @package WpProvision\Wp
  */
-class WpCliUser implements User {
+class WpCliUser implements UserInterface {
 
 	/**
-	 * @var Command\WpCliCommand
+	 * @var Command\WpCliCommandInterface
 	 */
 	private $wp_cli;
 
 	/**
-	 * @param Command\WpCliCommand $wp_cli
+	 * @param Command\WpCliCommandInterface $wp_cli
 	 */
-	public function __construct( Command\WpCliCommand $wp_cli ) {
+	public function __construct( Command\WpCliCommandInterface $wp_cli ) {
 
 		$this->wp_cli = $wp_cli;
 	}

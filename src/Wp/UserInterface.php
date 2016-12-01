@@ -5,7 +5,7 @@ namespace WpProvision\Wp;
 use
 	Exception;
 
-interface User {
+interface UserInterface {
 
 	/**
 	 * @param string $email_or_login

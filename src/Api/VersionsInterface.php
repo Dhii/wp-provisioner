@@ -7,7 +7,7 @@ namespace WpProvision\Api;
  *
  * @package WpProvision\Api
  */
-interface Versions {
+interface VersionsInterface {
 
 	/**
 	 * @param string $version

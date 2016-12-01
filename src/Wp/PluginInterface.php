@@ -7,7 +7,7 @@ namespace WpProvision\Wp;
  *
  * @package WpProvision\Wp
  */
-interface Plugin {
+interface PluginInterface {
 
 	/**
 	 * @param string|array $plugin The plugin slug or a list of slugs (e.g. 'multilingual-press', 'akismet' )

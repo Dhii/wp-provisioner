@@ -10,7 +10,7 @@ use
  *
  * @package WpProvision\Wp
  */
-interface Site {
+interface SiteInterface {
 
 	/**
 	 * @param string $url The site url (e.g. example.dev/en/)

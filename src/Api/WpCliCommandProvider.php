@@ -15,10 +15,10 @@ use
  * 
  * @package WpProvision\Api
  */
-class WpCliCommandProvider implements WpCommandProvider {
+class WpCliCommandProvider implements WpCommandProviderInterface {
 
 	/**
-	 * @var Command\WpCliCommand
+	 * @var Command\WpCliCommandInterface
 	 */
 	private $wp_cli;
 	
@@ -27,7 +27,7 @@ class WpCliCommandProvider implements WpCommandProvider {
 	private $site;
 	private $user;
 	
-	public function __construct( Command\WpCliCommand $wp_cli ) {
+	public function __construct( Command\WpCliCommandInterface $wp_cli ) {
 	
 		$this->wp_cli = $wp_cli;
 		$this->core = new Wp\WpCliCore( $wp_cli, new Utils\Sha1PasswordGenerator );
@@ -37,7 +37,7 @@ class WpCliCommandProvider implements WpCommandProvider {
 	}
 
 	/**
-	 * @return Wp\Core
+	 * @return Wp\CoreInterface
 	 */
 	public function core() {
 		
@@ -45,7 +45,7 @@ class WpCliCommandProvider implements WpCommandProvider {
 	}
 
 	/**
-	 * @return Wp\Plugin
+	 * @return Wp\PluginInterface
 	 */
 	public function plugin() {
 		
@@ -53,7 +53,7 @@ class WpCliCommandProvider implements WpCommandProvider {
 	}
 
 	/**
-	 * @return Wp\Site
+	 * @return Wp\SiteInterface
 	 */
 	public function site() {
 		
@@ -61,7 +61,7 @@ class WpCliCommandProvider implements WpCommandProvider {
 	}
 
 	/**
-	 * @return Wp\User
+	 * @return Wp\UserInterface
 	 */
 	public function user() {
 		

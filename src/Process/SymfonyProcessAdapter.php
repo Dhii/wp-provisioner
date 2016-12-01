@@ -14,4 +14,4 @@ use
  */
 class SymfonyProcessAdapter
 	extends SymfonyProcess
-	implements Process {}
+	implements ProcessInterface {}

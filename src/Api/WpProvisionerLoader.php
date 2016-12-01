@@ -15,7 +15,7 @@ use
  *
  * @package WpProvision\Api
  */
-class WpProvisionerLoader implements WpProvisioner {
+class WpProvisionerLoader implements WpProvisionerInterface {
 
 	const VERSION = 'dev-master';
 
@@ -25,12 +25,12 @@ class WpProvisionerLoader implements WpProvisioner {
 	private $vendor_dir;
 
 	/**
-	 * @var Versions
+	 * @var VersionsInterface
 	 */
 	private $versions;
 
 	/**
-	 * @var Process\ProcessBuilder
+	 * @var Process\ProcessBuilderInterface
 	 */
 	private $process_builder;
 
@@ -40,7 +40,7 @@ class WpProvisionerLoader implements WpProvisioner {
 	private $wp_cli;
 
 	/**
-	 * @var WpCommandProvider
+	 * @var WpCommandProviderInterface
 	 */
 	private $provider;
 
@@ -78,7 +78,7 @@ class WpProvisionerLoader implements WpProvisioner {
 	}
 
 	/**
-	 * @return Versions
+	 * @return VersionsInterface
 	 */
 	public function versionList() {
 

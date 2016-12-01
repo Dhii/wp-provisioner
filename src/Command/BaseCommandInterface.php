@@ -9,7 +9,7 @@ namespace WpProvision\Command;
  *
  * @package WpProvision\Command
  */
-interface BaseCommand {
+interface BaseCommandInterface {
 
 	/**
 	 * @return string

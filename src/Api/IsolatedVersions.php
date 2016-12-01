@@ -13,7 +13,7 @@ use
  *
  * @package WpProvision\Api
  */
-class IsolatedVersions implements Versions {
+class IsolatedVersions implements VersionsInterface {
 
 	/**
 	 * @var array
@@ -21,14 +21,14 @@ class IsolatedVersions implements Versions {
 	private $versions = [];
 
 	/**
-	 * @var WpCommandProvider
+	 * @var WpCommandProviderInterface
 	 */
 	private $provider;
 
 	/**
-	 * @param WpCommandProvider $provider
+	 * @param WpCommandProviderInterface $provider
 	 */
-	public function __construct( WpCommandProvider $provider ) {
+	public function __construct( WpCommandProviderInterface $provider ) {
 
 		$this->provider = $provider;
 	}

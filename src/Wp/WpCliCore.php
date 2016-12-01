@@ -13,23 +13,23 @@ use
  *
  * @package WpProvision\Wp
  */
-class WpCliCore implements Core {
+class WpCliCore implements CoreInterface {
 
 	/**
-	 * @var Command\WpCliCommand
+	 * @var Command\WpCliCommandInterface
 	 */
 	private $wp_cli;
 
 	/**
-	 * @var Utils\PasswordGenerator
+	 * @var Utils\PasswordGeneratorInterface
 	 */
 	private $pw_generator;
 
 	/**
-	 * @param Command\WpCliCommand $wp_cli
-	 * @param Utils\PasswordGenerator $pw_generator
+	 * @param Command\WpCliCommandInterface $wp_cli
+	 * @param Utils\PasswordGeneratorInterface $pw_generator
 	 */
-	public function __construct( Command\WpCliCommand $wp_cli, Utils\PasswordGenerator $pw_generator ) {
+	public function __construct( Command\WpCliCommandInterface $wp_cli, Utils\PasswordGeneratorInterface $pw_generator ) {
 
 		$this->wp_cli       = $wp_cli;
 		$this->pw_generator = $pw_generator;

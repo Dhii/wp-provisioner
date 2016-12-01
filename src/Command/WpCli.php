@@ -16,7 +16,7 @@ use
  *
  * @package WpProvision\Command
  */
-class WpCli implements WpCliCommand {
+class WpCli implements WpCliCommandInterface {
 
 	/**
 	 * @var string
@@ -29,23 +29,23 @@ class WpCli implements WpCliCommand {
 	private $bin_path;
 
 	/**
-	 * @var Env\Shell
+	 * @var Env\ShellInterface
 	 */
 	private $shell;
 
 	/**
-	 * @var Process\ProcessBuilder
+	 * @var Process\ProcessBuilderInterface
 	 */
 	private $process_builder;
 
 	/**
-	 * @param Env\Shell $shell
+	 * @param Env\ShellInterface $shell
 	 * @param string $bin_path
 	 */
 	public function __construct(
-		Env\Shell $shell,
+		Env\ShellInterface $shell,
 		$bin_path = '',
-		Process\ProcessBuilder $process_builder = NULL
+		Process\ProcessBuilderInterface $process_builder = NULL
 	) {
 
 		/**

@@ -7,7 +7,7 @@ namespace WpProvision\Utils;
  *
  * @package WpProvision\Utils
  */
-interface PasswordGenerator {
+interface PasswordGeneratorInterface {
 
 	/**
 	 * @return string

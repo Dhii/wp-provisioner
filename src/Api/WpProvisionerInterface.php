@@ -2,10 +2,10 @@
 
 namespace WpProvision\Api;
 
-interface WpProvisioner {
+interface WpProvisionerInterface {
 
 	/**
-	 * @return Versions
+	 * @return VersionsInterface
 	 */
 	public function versionList();
 
