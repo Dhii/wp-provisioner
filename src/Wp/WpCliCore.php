@@ -1,10 +1,10 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Wp;
+namespace Dhii\WpProvision\Wp;
 
-use WpProvision\Command;
-use WpProvision\Utils;
+use Dhii\WpProvision\Command;
+use Dhii\WpProvision\Utils;
 use InvalidArgumentException;
 use Exception;
 

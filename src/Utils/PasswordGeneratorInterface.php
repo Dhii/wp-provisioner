@@ -1,7 +1,7 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Utils;
+namespace Dhii\WpProvision\Utils;
 
 /**
  * Interface PasswordGenerator.

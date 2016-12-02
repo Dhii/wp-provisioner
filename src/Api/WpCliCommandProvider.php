@@ -1,11 +1,11 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Api;
+namespace Dhii\WpProvision\Api;
 
-use WpProvision\Command;
-use WpProvision\Utils;
-use WpProvision\Wp;
+use Dhii\WpProvision\Command;
+use Dhii\WpProvision\Utils;
+use Dhii\WpProvision\Wp;
 
 /**
  * Class WpCliCommandProvider.
@@ -30,7 +30,7 @@ class WpCliCommandProvider implements WpCommandProviderInterface
     /**
      * @since [*next-version*]
      *
-     * @param \WpProvision\Command\WpCliCommandInterface $wp_cli
+     * @param \Dhii\WpProvision\Command\WpCliCommandInterface $wp_cli
      */
     public function __construct(Command\WpCliCommandInterface $wp_cli)
     {

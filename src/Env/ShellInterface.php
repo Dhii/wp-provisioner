@@ -1,7 +1,7 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Env;
+namespace Dhii\WpProvision\Env;
 
 /**
  * Interface Shell.

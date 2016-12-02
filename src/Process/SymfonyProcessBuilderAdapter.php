@@ -1,7 +1,7 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Process;
+namespace Dhii\WpProvision\Process;
 
 use Symfony\Component\Process\ProcessBuilder as SymfonyProcessBuilder;
 

@@ -1,9 +1,9 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Api;
+namespace Dhii\WpProvision\Api;
 
-use WpProvision\Wp;
+use Dhii\WpProvision\Wp;
 
 /**
  * Interface WpCommandProvider.

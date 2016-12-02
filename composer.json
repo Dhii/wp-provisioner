@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "WpProvision\\": "src/"
+            "Dhii\\WpProvision\\": "src/"
         }
     },
     "bin": [

@@ -1,10 +1,10 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Command;
+namespace Dhii\WpProvision\Command;
 
-use WpProvision\Env;
-use WpProvision\Process;
+use Dhii\WpProvision\Env;
+use Dhii\WpProvision\Process;
 use LogicException;
 
 /**

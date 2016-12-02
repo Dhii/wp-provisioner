@@ -1,12 +1,12 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Api;
+namespace Dhii\WpProvision\Api;
 
-use WpProvision\App;
-use WpProvision\Command;
-use WpProvision\Env;
-use WpProvision\Process;
+use Dhii\WpProvision\App;
+use Dhii\WpProvision\Command;
+use Dhii\WpProvision\Env;
+use Dhii\WpProvision\Process;
 use Symfony\Component\Console as SymfonyConsole;
 use LogicException;
 

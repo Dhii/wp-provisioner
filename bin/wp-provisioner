@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-namespace WpProvision;
+namespace Dhii\WpProvision;
 
 $base_dir = dirname( __DIR__ );
 

@@ -1,9 +1,9 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Env;
+namespace Dhii\WpProvision\Env;
 
-use WpProvision\Process;
+use Dhii\WpProvision\Process;
 
 /**
  * Class Bash.

@@ -1,7 +1,7 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Process;
+namespace Dhii\WpProvision\Process;
 
 /**
  * Interface Process.

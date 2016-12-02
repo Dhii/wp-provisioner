@@ -1,9 +1,9 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Wp;
+namespace Dhii\WpProvision\Wp;
 
-use WpProvision\Command;
+use Dhii\WpProvision\Command;
 use InvalidArgumentException;
 use Exception;
 

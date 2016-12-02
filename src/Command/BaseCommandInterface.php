@@ -1,7 +1,7 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Command;
+namespace Dhii\WpProvision\Command;
 
 /**
  * Interface BaseCommand.

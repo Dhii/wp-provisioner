@@ -1,9 +1,9 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\App\Command;
+namespace Dhii\WpProvision\App\Command;
 
-use WpProvision\Api;
+use Dhii\WpProvision\Api;
 use Symfony\Component\Console\Command as SymfonyCommand;
 use Symfony\Component\Console\Input as SymfonyInput;
 use Symfony\Component\Console\Output as SymfonyOutput;

@@ -1,7 +1,7 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Api;
+namespace Dhii\WpProvision\Api;
 
 /**
  * @since [*next-version*]

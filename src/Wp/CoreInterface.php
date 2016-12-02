@@ -1,7 +1,7 @@
 <?php
 # -*- coding: utf-8 -*-
 
-namespace WpProvision\Wp;
+namespace Dhii\WpProvision\Wp;
 
 /**
  * Interface Core.
