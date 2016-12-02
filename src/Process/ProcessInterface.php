@@ -9,14 +9,12 @@ namespace Dhii\WpProvision\Process;
  * Incomplete interface for Symfony\Component\Process\Process
  *
  * @since [*next-version*]
- *
  * @see Symfony\Component\Process\Process
  */
 interface ProcessInterface
 {
     /**
      * @since [*next-version*]
-     *
      * @see Symfony\Component\Process\Process::setTimeout()
      *
      * @param int|float|null $timeout The timeout in seconds
@@ -54,7 +52,6 @@ interface ProcessInterface
 
     /**
      * @since [*next-version*]
-     *
      * @see Symfony\Component\Process\Process::getOutput()
      *
      * @throws \LogicException in case the output has been disabled or the process is not started

@@ -48,5 +48,5 @@ interface SiteInterface
      *
      * @return int
      */
-    public function create($url, array $attributes = array(), $network_id = 0, $graceful = true);
+    public function create($url, array $attributes = [], $network_id = 0, $graceful = true);
 }

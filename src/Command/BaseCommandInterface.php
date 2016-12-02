@@ -33,5 +33,5 @@ interface BaseCommandInterface
      *
      * @return string
      */
-    public function run(array $arguments = array());
+    public function run(array $arguments = []);
 }

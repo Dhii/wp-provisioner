@@ -18,7 +18,7 @@ class IsolatedVersions implements VersionsInterface
     /**
      * @var array
      */
-    private $versions = array();
+    private $versions = [];
 
     /**
      * @var WpCommandProviderInterface
@@ -61,7 +61,7 @@ class IsolatedVersions implements VersionsInterface
             throw new LogicException("No provisioner registered for version '{$version}''");
         }
 
-        call_user_func_array($this->versions[ $version ], array($this->provider));
+        call_user_func_array($this->versions[ $version ], [$this->provider]);
     }
 
     /**

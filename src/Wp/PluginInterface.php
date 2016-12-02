@@ -21,7 +21,7 @@ interface PluginInterface
      *
      * @return bool
      */
-    public function activate($plugin, array $options = array());
+    public function activate($plugin, array $options = []);
 
     /**
      * @since [*next-version*]
@@ -35,7 +35,7 @@ interface PluginInterface
      *
      * @return bool
      */
-    public function deactivate($plugin, array $options = array());
+    public function deactivate($plugin, array $options = []);
 
     /**
      * @since [*next-version*]
@@ -47,7 +47,7 @@ interface PluginInterface
      *
      * @return bool
      */
-    public function isInstalled($plugin, array $options = array());
+    public function isInstalled($plugin, array $options = []);
 
     /**
      * @since [*next-version*]
@@ -59,7 +59,7 @@ interface PluginInterface
      *
      * @return bool
      */
-    public function isActive($plugin, array $options = array());
+    public function isActive($plugin, array $options = []);
 
     /**
      * @since [*next-version*]
@@ -72,5 +72,5 @@ interface PluginInterface
      *
      * @return bool
      */
-    public function uninstall($plugin, array $options = array());
+    public function uninstall($plugin, array $options = []);
 }

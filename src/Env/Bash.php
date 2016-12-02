@@ -39,11 +39,11 @@ class Bash implements ShellInterface
         $process = $this
             ->processBuilder
             ->setArguments(
-                array(
+                [
                     'hash',
                     $command,
                     '2>/dev/null || echo "false"',
-                )
+                ]
             )
             ->getProcess();
 

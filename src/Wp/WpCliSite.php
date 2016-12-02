@@ -59,7 +59,6 @@ class WpCliSite implements SiteInterface
 
     /**
      * @since [*next-version*]
-     *
      * @link http://wp-cli.org/commands/site/list/
      *
      * @param string $url        The site url (e.g. example.dev/en/)
@@ -69,7 +68,7 @@ class WpCliSite implements SiteInterface
      */
     public function siteId($url, $network_id = 0)
     {
-        $arguments = array('site', 'list', '--fields=blog_id,url');
+        $arguments = ['site', 'list', '--fields=blog_id,url'];
         if ($network_id) {
             $arguments[] = '--network=' . (int) $network_id;
         }
@@ -116,7 +115,7 @@ class WpCliSite implements SiteInterface
                 return; // skip table header
             }
 
-            return array('id' => (int) $id, 'url' => trim($url));
+            return ['id' => (int) $id, 'url' => trim($url)];
         };
 
         try {
@@ -143,7 +142,6 @@ class WpCliSite implements SiteInterface
 
     /**
      * @since [*next-version*]
-     *
      * @link http://wp-cli.org/commands/site/create/
      *
      * @param string $url        (Site URL including protocol, e.g. https://whatever.mysite.tld/en/ )
@@ -159,7 +157,7 @@ class WpCliSite implements SiteInterface
      *
      * @return int
      */
-    public function create($url, array $attributes = array(), $network_id = 0, $graceful = true)
+    public function create($url, array $attributes = [], $network_id = 0, $graceful = true)
     {
         $user_email = isset($attributes[ 'user_email' ])
             ? $attributes[ 'user_email' ]
@@ -190,18 +188,18 @@ class WpCliSite implements SiteInterface
 
         // check dependencies
         $cli_site_url_plugin = 'wp-cli-site-url';
-        if ($use_url && !$this->plugin->isActive($cli_site_url_plugin, array('network' => true))) {
+        if ($use_url && !$this->plugin->isActive($cli_site_url_plugin, ['network' => true])) {
             // try to activate it, if installed (it should, it is a dependency of WP Provisioner)
             if ($this->plugin->isInstalled($cli_site_url_plugin)) {
-                $this->plugin->activate($cli_site_url_plugin, array('network' => true));
+                $this->plugin->activate($cli_site_url_plugin, ['network' => true]);
             }
             // check again...
-            if (!$this->plugin->isActive($cli_site_url_plugin, array('network' => true))) {
+            if (!$this->plugin->isActive($cli_site_url_plugin, ['network' => true])) {
                 throw new LogicException("Plugin inpsyde/{$cli_site_url_plugin} is not available but required");
             }
         }
 
-        $create_args = array('site', 'create', "--slug={$slug}", '--porcelain');
+        $create_args = ['site', 'create', "--slug={$slug}", '--porcelain'];
 
         if ($user_email) {
             $create_args[] = "--email={$user_email}";
@@ -225,7 +223,7 @@ class WpCliSite implements SiteInterface
         }
 
         $this->wp_cli->run(
-            array('site-url', 'update', $site_id, $url)
+            ['site-url', 'update', $site_id, $url]
         );
 
         return $site_id;

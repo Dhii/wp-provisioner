@@ -31,7 +31,6 @@ class WpCliPlugin implements PluginInterface
 
     /**
      * @since [*next-version*]
-     *
      * @link http://wp-cli.org/commands/plugin/activate/
      *
      * @param string|array $plugin  The plugin slug or a list of slugs (e.g. 'multilingual-press', 'akismet' )
@@ -42,12 +41,12 @@ class WpCliPlugin implements PluginInterface
      *
      * @return bool
      */
-    public function activate($plugin, array $options = array())
+    public function activate($plugin, array $options = [])
     {
         if (!is_array($plugin) && !is_string($plugin)) {
             throw new InvalidArgumentException('First argument $plugin must be of type string or array');
         }
-        $arguments = array('plugin', 'activate');
+        $arguments = ['plugin', 'activate'];
         if (isset($options[ 'all' ]) && true === $options[ 'all' ]) {
             $arguments[] = '--all';
         } else {
@@ -78,7 +77,6 @@ class WpCliPlugin implements PluginInterface
      * given $option[ 'network' ] parameter.
      * If in doubt, check $this->isActive( 'plugin' ) and $this->isActive( 'plugin', ['network' => TRUE ] ) for
      * the plugins status.
-     *
      * @link http://wp-cli.org/commands/plugin/deactivate/
      *
      * @param string|array $plugin  The plugin slug or a list of slugs (e.g. 'multilingual-press', 'akismet' )
@@ -90,12 +88,12 @@ class WpCliPlugin implements PluginInterface
      *
      * @return bool
      */
-    public function deactivate($plugin, array $options = array())
+    public function deactivate($plugin, array $options = [])
     {
         if (!is_array($plugin) && !is_string($plugin)) {
             throw new InvalidArgumentException('First argument $plugin must be of type string or array');
         }
-        $arguments = array('plugin', 'deactivate');
+        $arguments = ['plugin', 'deactivate'];
         if (isset($options[ 'all' ]) && true === $options[ 'all' ]) {
             $arguments[] = '--all';
         } else {
@@ -127,7 +125,6 @@ class WpCliPlugin implements PluginInterface
      * @since [*next-version*]
      *
      * Is installed means that the plugin is available for activation.
-     *
      * @link http://wp-cli.org/commands/plugin/is-installed/
      *
      * @param string $plugin  The plugin slug (e.g. 'multilingual-press', 'akismet' )
@@ -135,12 +132,12 @@ class WpCliPlugin implements PluginInterface
      *
      * @return bool
      */
-    public function isInstalled($plugin, array $options = array())
+    public function isInstalled($plugin, array $options = [])
     {
         if (!is_string($plugin)) {
             throw new InvalidArgumentException('First parameter $plugin must be of type string');
         }
-        $arguments = array('plugin', 'is-installed', $plugin);
+        $arguments = ['plugin', 'is-installed', $plugin];
 
         try {
             $this->wp_cli->run($arguments);
@@ -164,12 +161,12 @@ class WpCliPlugin implements PluginInterface
      *
      * @return bool
      */
-    public function isActive($plugin, array $options = array())
+    public function isActive($plugin, array $options = [])
     {
         if (!is_string($plugin)) {
             throw new InvalidArgumentException('First parameter $plugin must be of type string');
         }
-        $arguments = array('plugin', 'list', "--name={$plugin}", '--field=status');
+        $arguments = ['plugin', 'list', "--name={$plugin}", '--field=status'];
         if (isset($options[ 'site_url' ])) {
             $arguments[] = "--url={$options[ 'site_url' ]}";
         }
@@ -190,7 +187,6 @@ class WpCliPlugin implements PluginInterface
      * the plugins status and deactivate it explicitly before.
      *
      * Todo: Find out what that issue is
-     *
      * @link http://wp-cli.org/commands/plugin/uninstall/
      *
      * @param string|array $plugin  The plugin slug or a list of slugs (e.g. 'multilingual-press', 'akismet' )
@@ -201,13 +197,13 @@ class WpCliPlugin implements PluginInterface
      *
      * @return bool
      */
-    public function uninstall($plugin, array $options = array())
+    public function uninstall($plugin, array $options = [])
     {
         if (!is_array($plugin) && !is_string($plugin)) {
             throw new InvalidArgumentException('First argument $plugin must be of type string or array');
         }
 
-        $arguments = array('plugin', 'uninstall');
+        $arguments = ['plugin', 'uninstall'];
         if (is_string($plugin)) {
             $arguments[] = $plugin;
         } else {

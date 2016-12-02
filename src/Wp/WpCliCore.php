@@ -39,7 +39,6 @@ class WpCliCore implements CoreInterface
 
     /**
      * @since [*next-version*]
-     *
      * @link http://wp-cli.org/commands/core/is-installed/
      *
      * @param bool $network If multisite is installed
@@ -48,7 +47,7 @@ class WpCliCore implements CoreInterface
      */
     public function isInstalled($network = false)
     {
-        $arguments = array('core', 'is-installed');
+        $arguments = ['core', 'is-installed'];
         if ($network) {
             $arguments[] = '--network';
         }
@@ -64,7 +63,6 @@ class WpCliCore implements CoreInterface
 
     /**
      * @since [*next-version*]
-     *
      * @link http://wp-cli.org/commands/core/install/
      *
      * @param string $url      URL of the new site
@@ -79,13 +77,13 @@ class WpCliCore implements CoreInterface
      *
      * @return bool
      */
-    public function install($url, array $admin, array $options = array(), $graceful = true)
+    public function install($url, array $admin, array $options = [], $graceful = true)
     {
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
             throw new InvalidArgumentException("'{$url}' is not a valid URL");
         }
 
-        foreach (array('email', 'login') as $admin_key) {
+        foreach (['email', 'login'] as $admin_key) {
             if (empty($admin[ $admin_key ])) {
                 throw new InvalidArgumentException("Missing array key '{$admin_key}' in \$admin parameter");
             }
@@ -102,7 +100,7 @@ class WpCliCore implements CoreInterface
             ? $options[ 'title' ]
             : 'Site installed by WP Provisioner';
 
-        $arguments = array(
+        $arguments = [
             'core',
             'install',
             "--url={$url}",
@@ -110,7 +108,7 @@ class WpCliCore implements CoreInterface
             "--admin_user={$admin[ 'login' ]}",
             "--admin_email={$admin[ 'email' ]}",
             "--admin_password={$password}",
-        );
+        ];
         if (isset($options[ 'skip_email' ]) && $options[ 'skip_email' ]) {
             $arguments[] = '--skip-email';
         }
@@ -122,7 +120,6 @@ class WpCliCore implements CoreInterface
 
     /**
      * @since [*next-version*]
-     *
      * @link http://wp-cli.org/commands/core/multisite-convert/
      *
      * @param array $options
@@ -132,7 +129,7 @@ class WpCliCore implements CoreInterface
      *
      * @return bool
      */
-    public function multisiteConvert(array $options = array())
+    public function multisiteConvert(array $options = [])
     {
         $base_path = isset($options[ 'base_path' ])
             ? '/' . ltrim($options[ 'base_path' ], '/')
@@ -142,7 +139,7 @@ class WpCliCore implements CoreInterface
             ? (bool) $options[ 'subdomains' ]
             : true;
 
-        $arguments = array('core', 'multisite-convert', "--base={$base_path}");
+        $arguments = ['core', 'multisite-convert', "--base={$base_path}"];
         if ($subdomains) {
             $arguments[] = '--subdomains';
         }
@@ -171,13 +168,13 @@ class WpCliCore implements CoreInterface
      *
      * @return bool
      */
-    public function multisiteInstall($url, array $admin, array $options = array(), $graceful = true)
+    public function multisiteInstall($url, array $admin, array $options = [], $graceful = true)
     {
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
             throw new InvalidArgumentException("'{$url}' is not a valid URL");
         }
 
-        foreach (array('email', 'login') as $admin_key) {
+        foreach (['email', 'login'] as $admin_key) {
             if (empty($admin[ $admin_key ])) {
                 throw new InvalidArgumentException("Missing array key '{$admin_key}' in \$admin parameter");
             }
@@ -212,7 +209,7 @@ class WpCliCore implements CoreInterface
             ? $options[ 'title' ]
             : 'Multisite installed by WP Provisioner';
 
-        $arguments = array(
+        $arguments = [
             'core',
             'multisite-install',
             "--url={$network_url}",
@@ -221,7 +218,7 @@ class WpCliCore implements CoreInterface
             "--admin_user={$admin[ 'login' ]}",
             "--admin_email={$admin[ 'email' ]}",
             "--admin_password={$password}",
-        );
+        ];
 
         if (!isset($options[ 'subdomains']) || false !== $options[ 'subdomains' ]) {
             $arguments[] = '--subdomains';

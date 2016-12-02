@@ -48,5 +48,5 @@ interface UserInterface
      *
      * @return int
      */
-    public function create($login, $email, array $attributes = array(), $site_url = '', $graceful = true);
+    public function create($login, $email, array $attributes = [], $site_url = '', $graceful = true);
 }

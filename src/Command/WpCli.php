@@ -105,7 +105,7 @@ class WpCli implements WpCliCommandInterface
      *
      * @return string
      */
-    public function run(array $arguments = array())
+    public function run(array $arguments = [])
     {
         if (!$this->commandExists()) {
             throw new LogicException("The base command {$this->base()} does not exists or is not executable.");
@@ -113,7 +113,7 @@ class WpCli implements WpCliCommandInterface
 
         $process = $this
             ->process_builder
-            ->setArguments(array()) // reset the process builder state
+            ->setArguments([]) // reset the process builder state
             ->setArguments($arguments)
             ->getProcess()
             ->mustRun();

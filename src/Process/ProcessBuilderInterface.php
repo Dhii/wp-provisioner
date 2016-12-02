@@ -9,25 +9,22 @@ namespace Dhii\WpProvision\Process;
  * Interface for Symfony\Components\Process\ProcessBuilder
  *
  * @since [*next-version*]
- *
  * @see Symfony\Component\Process\ProcessBuilder
  */
 interface ProcessBuilderInterface
 {
     /**
      * @since [*next-version*]
-     *
      * @see Symfony\Component\Process\ProcessBuilder::create()
      *
      * @param array $arguments
      *
      * @return ProcessBuilderInterface
      */
-    public static function create(array $arguments = array());
+    public static function create(array $arguments = []);
 
     /**
      * @since [*next-version*]
-     *
      * @see Symfony\Component\Process\ProcessBuilder::setArguments()
      *
      * @param array $arguments
@@ -38,7 +35,6 @@ interface ProcessBuilderInterface
 
     /**
      * @since [*next-version*]
-     *
      * @see Symfony\Component\Process\ProcessBuilder::getProcess()
      *
      * @throws \LogicException In case no arguments have been provided

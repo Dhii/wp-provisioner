@@ -39,7 +39,7 @@ class WpCliUser implements UserInterface
      */
     public function userId($email_or_login)
     {
-        $arguments = array('user', 'get', $email_or_login, '--field=ID');
+        $arguments = ['user', 'get', $email_or_login, '--field=ID'];
 
         try {
             $result = trim($this->wp_cli->run($arguments));
@@ -64,7 +64,6 @@ class WpCliUser implements UserInterface
 
     /**
      * @since [*next-version*]
-     *
      * @link http://wp-cli.org/commands/user/create/
      *
      * @param $login
@@ -84,7 +83,7 @@ class WpCliUser implements UserInterface
      *
      * @return int
      */
-    public function create($login, $email, array $attributes = array(), $site_url = '', $graceful = true)
+    public function create($login, $email, array $attributes = [], $site_url = '', $graceful = true)
     {
         $login_exists = $this->exists($login);
         if ($login_exists && !$graceful) {
@@ -102,14 +101,14 @@ class WpCliUser implements UserInterface
             return $this->userId($email);
         }
 
-        $process_arguments = array('user', 'create', $login, $email, '--porcelain');
-        $attr_keys         = array(
+        $process_arguments = ['user', 'create', $login, $email, '--porcelain'];
+        $attr_keys         = [
             'role'         => '--role=',
             'password'     => '--user_pass=',
             'first_name'   => '--first_name=',
             'last_name'    => '--last_name=',
             'display_name' => '--display_name=',
-        );
+        ];
         foreach ($attr_keys as $attribute_key => $process_attribute) {
             if (empty($attributes[ $attribute_key ])) {
                 continue;

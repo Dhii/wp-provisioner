@@ -34,7 +34,7 @@ interface CoreInterface
      *
      * @return bool
      */
-    public function install($url, array $admin, array $options = array(), $graceful = true);
+    public function install($url, array $admin, array $options = [], $graceful = true);
 
     /**
      * @since [*next-version*]
@@ -46,7 +46,7 @@ interface CoreInterface
      *
      * @return bool
      */
-    public function multisiteConvert(array $options = array());
+    public function multisiteConvert(array $options = []);
 
     /**
      * @since [*next-version*]
@@ -64,5 +64,5 @@ interface CoreInterface
      *
      * @return bool
      */
-    public function multisiteInstall($url, array $admin, array $options = array(), $graceful = true);
+    public function multisiteInstall($url, array $admin, array $options = [], $graceful = true);
 }
