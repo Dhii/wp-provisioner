@@ -1,18 +1,20 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+# -*- coding: utf-8 -*-
 
-namespace WpProvision\Process;
+namespace Dhii\WpProvision\Process;
 
-use
-	Symfony\Component\Process\ProcessBuilder as SymfonyProcessBuilder;
+use Symfony\Component\Process\ProcessBuilder as SymfonyProcessBuilder;
 
 /**
- * Class SymfonyProcessBuilderAdapter
+ * Class SymfonyProcessBuilderAdapter.
  *
  * Adapts the Process\ProcessBuilder interface with the
  * Symfony ProcessBuilder implementation
  *
- * @package WpProvision\Process
+ * @since [*next-version*]
  */
 class SymfonyProcessBuilderAdapter
-	extends SymfonyProcessBuilder
-	implements ProcessBuilder {}
+    extends SymfonyProcessBuilder
+    implements ProcessBuilderInterface
+{
+}
