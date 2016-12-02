@@ -50,7 +50,7 @@ interface ProcessInterface
      *
      * @return self
      */
-    public function mustRun(callable $callback = null);
+    public function mustRun($callback = null);
 
     /**
      * @since [*next-version*]
