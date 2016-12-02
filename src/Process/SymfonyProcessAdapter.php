@@ -1,17 +1,17 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+# -*- coding: utf-8 -*-
 
 namespace WpProvision\Process;
 
-use
-	Symfony\Component\Process\Process as SymfonyProcess;
+use Symfony\Component\Process\Process as SymfonyProcess;
 
 /**
- * Class SymfonyProcessAdapter
+ * Class SymfonyProcessAdapter.
  *
  * Adapts the Process\Process interface with the Symfony Process implementation
- *
- * @package WpProvision\Process
  */
 class SymfonyProcessAdapter
-	extends SymfonyProcess
-	implements ProcessInterface {}
+    extends SymfonyProcess
+    implements ProcessInterface
+{
+}

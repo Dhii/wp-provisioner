@@ -1,55 +1,55 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+# -*- coding: utf-8 -*-
 
 namespace WpProvision\Process;
 
 /**
- * Interface Process
+ * Interface Process.
  *
  * Incomplete interface for Symfony\Component\Process\Process
  *
  * @see Symfony\Component\Process\Process
- * @package WpProvision\Process
  */
-interface ProcessInterface {
+interface ProcessInterface
+{
+    /**
+     * @param int|float|null $timeout The timeout in seconds
+     *
+     * @see Symfony\Component\Process\Process::setTimeout()
+     *
+     * @throws \InvalidArgumentException if the timeout is negative
+     *
+     * @return self
+     */
+    public function setTimeout($timeout);
 
-	/**
-	 * @param int|float|null $timeout The timeout in seconds
-	 *
-	 * @see Symfony\Component\Process\Process::setTimeout()
-	 *
-	 * @return self
-	 *
-	 * @throws \InvalidArgumentException if the timeout is negative
-	 */
-	public function setTimeout( $timeout );
+    /**
+     * @param int|float|null $timeout The timeout in seconds
+     *
+     * @see Symfony\Component\Process\Process::setIdleTimeout()
+     *
+     * @throws \LogicException           if the output is disabled
+     * @throws \InvalidArgumentException if the timeout is negative
+     *
+     * @return self
+     */
+    public function setIdleTimeout($timeout);
 
-	/**
-	 * @param int|float|null $timeout The timeout in seconds
-	 *
-	 * @see Symfony\Component\Process\Process::setIdleTimeout()
-	 *
-	 * @return self
-	 *
-	 * @throws \LogicException           if the output is disabled
-	 * @throws \InvalidArgumentException if the timeout is negative
-	 */
-	public function setIdleTimeout( $timeout );
+    /**
+     * @param callable|null $callback
+     *
+     * @see Symfony\Component\Process\Process::mustRun()
+     *
+     * @return self
+     */
+    public function mustRun(callable $callback = null);
 
-	/**
-	 * @param callable|NULL $callback
-	 *
-	 * @see Symfony\Component\Process\Process::mustRun()
-	 *
-	 * @return self
-	 */
-	public function mustRun( callable $callback = null );
-
-	/**
-	 * @see Symfony\Component\Process\Process::getOutput()
-	 *
-	 * @return string
-	 *
-	 * @throws \LogicException in case the output has been disabled or the process is not started
-	 */
-	public function getOutput();
+    /**
+     * @see Symfony\Component\Process\Process::getOutput()
+     *
+     * @throws \LogicException in case the output has been disabled or the process is not started
+     *
+     * @return string
+     */
+    public function getOutput();
 }

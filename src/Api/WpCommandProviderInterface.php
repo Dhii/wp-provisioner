@@ -1,34 +1,32 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+# -*- coding: utf-8 -*-
 
 namespace WpProvision\Api;
 
-use
-	WpProvision\Wp;
+use WpProvision\Wp;
 
 /**
- * Interface WpCommandProvider
- *
- * @package WpProvision\Api
+ * Interface WpCommandProvider.
  */
-interface WpCommandProviderInterface {
+interface WpCommandProviderInterface
+{
+    /**
+     * @return Wp\CoreInterface
+     */
+    public function core();
 
-	/**
-	 * @return Wp\CoreInterface
-	 */
-	public function core();
+    /**
+     * @return Wp\PluginInterface
+     */
+    public function plugin();
 
-	/**
-	 * @return Wp\PluginInterface
-	 */
-	public function plugin();
+    /**
+     * @return Wp\SiteInterface
+     */
+    public function site();
 
-	/**
-	 * @return Wp\SiteInterface
-	 */
-	public function site();
-
-	/**
-	 * @return Wp\UserInterface
-	 */
-	public function user();
+    /**
+     * @return Wp\UserInterface
+     */
+    public function user();
 }

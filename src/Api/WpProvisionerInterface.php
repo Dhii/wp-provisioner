@@ -1,16 +1,17 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+# -*- coding: utf-8 -*-
 
 namespace WpProvision\Api;
 
-interface WpProvisionerInterface {
+interface WpProvisionerInterface
+{
+    /**
+     * @return VersionsInterface
+     */
+    public function versionList();
 
-	/**
-	 * @return VersionsInterface
-	 */
-	public function versionList();
-
-	/**
-	 * @param $wp_dir
-	 */
-	public function setWpDir( $wp_dir );
+    /**
+     * @param $wp_dir
+     */
+    public function setWpDir($wp_dir);
 }

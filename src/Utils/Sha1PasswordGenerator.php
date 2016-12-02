@@ -1,41 +1,41 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+# -*- coding: utf-8 -*-
 
 namespace WpProvision\Utils;
 
 /**
- * Class Sha1PasswordGenerator
- *
- * @package WpProvision\Utils
+ * Class Sha1PasswordGenerator.
  */
-class Sha1PasswordGenerator implements PasswordGeneratorInterface {
+class Sha1PasswordGenerator implements PasswordGeneratorInterface
+{
+    /**
+     * @var int
+     */
+    private $length = 20;
 
-	/**
-	 * @var int
-	 */
-	private $length = 20;
+    /**
+     * @param int $length Values between 1 and 40 are valid
+     */
+    public function __construct($length = 20)
+    {
+        $length = (int) $length;
+        if (1 > $length) {
+            $length = 20;
+        }
+        if (40 < $length) {
+            $length = 40;
+        }
 
-	/**
-	 * @param int $length Values between 1 and 40 are valid
-	 */
-	public function __construct( $length = 20 ) {
+        $this->length = $length;
+    }
 
-		$length = (int) $length;
-		if ( 1 > $length )
-			$length = 20;
-		if ( 40 < $length )
-			$length = 40;
+    /**
+     * @return string
+     */
+    public function generatePassword()
+    {
+        $random = microtime() / mt_rand(1, time());
 
-		$this->length = $length;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function generatePassword() {
-
-		$random = microtime() / mt_rand( 1, time() );
-
-		return substr( sha1( $random ), 0, $this->length );
-	}
-
+        return substr(sha1($random), 0, $this->length);
+    }
 }

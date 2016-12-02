@@ -1,79 +1,76 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+# -*- coding: utf-8 -*-
 
 namespace WpProvision\Api;
 
-use
-	LogicException;
+use LogicException;
 
 /**
- * Class IsolatedVersions
+ * Class IsolatedVersions.
  *
  * Minimal implementation of the version list. This does not resolve consecutive version numbers (as planned
  * in the API concept)
- *
- * @package WpProvision\Api
  */
-class IsolatedVersions implements VersionsInterface {
+class IsolatedVersions implements VersionsInterface
+{
+    /**
+     * @var array
+     */
+    private $versions = array();
 
-	/**
-	 * @var array
-	 */
-	private $versions = [];
+    /**
+     * @var WpCommandProviderInterface
+     */
+    private $provider;
 
-	/**
-	 * @var WpCommandProviderInterface
-	 */
-	private $provider;
+    /**
+     * @param WpCommandProviderInterface $provider
+     */
+    public function __construct(WpCommandProviderInterface $provider)
+    {
+        $this->provider = $provider;
+    }
 
-	/**
-	 * @param WpCommandProviderInterface $provider
-	 */
-	public function __construct( WpCommandProviderInterface $provider ) {
+    /**
+     * @param string $version
+     *
+     * @return bool
+     */
+    public function versionExists($version)
+    {
+        return isset($this->versions[ $version ]);
+    }
 
-		$this->provider = $provider;
-	}
+    /**
+     * @param string $version
+     * @param bool   $isolation
+     *
+     * @return bool
+     */
+    public function executeProvision($version, $isolation = false)
+    {
+        if (!$this->versionExists($version)) {
+            throw new LogicException("No provisioner registered for version '{$version}''");
+        }
 
-	/**
-	 * @param string $version
-	 *
-	 * @return bool
-	 */
-	public function versionExists( $version ) {
+        call_user_func_array($this->versions[ $version ], array($this->provider));
+    }
 
-		return isset( $this->versions[ $version ] );
-	}
+    /**
+     * Register a provision routine.
+     *
+     * @param string   $version
+     * @param callable $callback
+     * @param bool     $isolation
+     *
+     * @return bool
+     */
+    public function addProvision($version, callable $callback, $isolation = false)
+    {
+        if ($this->versionExists($version)) {
+            throw new LogicException("Version '{$version}' already exists");
+        }
 
-	/**
-	 * @param string $version
-	 * @param bool   $isolation
-	 *
-	 * @return bool
-	 */
-	public function executeProvision( $version, $isolation = FALSE ) {
-
-		if ( ! $this->versionExists( $version ) ) {
-			throw new LogicException( "No provisioner registered for version '{$version}''" );
-		}
-
-		call_user_func_array( $this->versions[ $version ], [ $this->provider ] );
-	}
-
-	/**
-	 * Register a provision routine
-	 *
-	 * @param string   $version
-	 * @param callable $callback
-	 * @param bool     $isolation
-	 *
-	 * @return bool
-	 */
-	public function addProvision( $version, callable $callback, $isolation = FALSE ) {
-
-		if ( $this->versionExists( $version ) ) {
-			throw new LogicException( "Version '{$version}' already exists" );
-		}
-
-		$this->versions[ $version ] = $callback;
-	}
-
+        $this->versions[ $version ] = $callback;
+    }
 }

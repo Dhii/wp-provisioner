@@ -1,30 +1,29 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+# -*- coding: utf-8 -*-
 
 namespace WpProvision\Command;
 
 /**
- * Interface BaseCommand
+ * Interface BaseCommand.
  *
  * Wraps a command (like `$ wp`) so you have to deal only with the arguments
- *
- * @package WpProvision\Command
  */
-interface BaseCommandInterface {
+interface BaseCommandInterface
+{
+    /**
+     * @return string
+     */
+    public function base();
 
-	/**
-	 * @return string
-	 */
-	public function base();
+    /**
+     * @return bool
+     */
+    public function commandExists();
 
-	/**
-	 * @return bool
-	 */
-	public function commandExists();
-
-	/**
-	 * @param array $arguments
-	 *
-	 * @return string
-	 */
-	public function run( array $arguments = [] );
+    /**
+     * @param array $arguments
+     *
+     * @return string
+     */
+    public function run(array $arguments = array());
 }

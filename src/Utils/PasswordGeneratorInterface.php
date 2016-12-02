@@ -1,16 +1,15 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+# -*- coding: utf-8 -*-
 
 namespace WpProvision\Utils;
 
 /**
- * Interface PasswordGenerator
- *
- * @package WpProvision\Utils
+ * Interface PasswordGenerator.
  */
-interface PasswordGeneratorInterface {
-
-	/**
-	 * @return string
-	 */
-	public function generatePassword();
+interface PasswordGeneratorInterface
+{
+    /**
+     * @return string
+     */
+    public function generatePassword();
 }
