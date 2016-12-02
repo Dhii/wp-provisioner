@@ -7,10 +7,14 @@ use Exception;
 
 /**
  * Interface Site.
+ *
+ * @since [*next-version*]
  */
 interface SiteInterface
 {
     /**
+     * @since [*next-version*]
+     *
      * @param string $url        The site url (e.g. example.dev/en/)
      * @param int    $network_id
      *
@@ -19,6 +23,8 @@ interface SiteInterface
     public function exists($url, $network_id = 0);
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $url        The site url (e.g. example.dev/en/)
      * @param int    $network_id
      *
@@ -27,6 +33,8 @@ interface SiteInterface
     public function siteId($url, $network_id = 0);
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $url        (Site URL including protocol, e.g. https://whatever.mysite.tld/en/ )
      * @param array  $attributes
      *                           string $attributes[ 'user_email' ]

@@ -5,9 +5,14 @@ namespace WpProvision\Wp;
 
 use Exception;
 
+/**
+ * @since [*next-version*]
+ */
 interface UserInterface
 {
     /**
+     * @since [*next-version*]
+     *
      * @param string $email_or_login
      *
      * @return int
@@ -15,6 +20,8 @@ interface UserInterface
     public function userId($email_or_login);
 
     /**
+     * @since [*next-version*]
+     *
      * @param bool $email_or_login
      *
      * @return bool
@@ -22,6 +29,8 @@ interface UserInterface
     public function exists($email_or_login);
 
     /**
+     * @since [*next-version*]
+     *
      * @param $login
      * @param $email
      * @param array  $attributes

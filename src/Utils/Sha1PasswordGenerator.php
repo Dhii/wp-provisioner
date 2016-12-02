@@ -5,6 +5,8 @@ namespace WpProvision\Utils;
 
 /**
  * Class Sha1PasswordGenerator.
+ *
+ * @since [*next-version*]
  */
 class Sha1PasswordGenerator implements PasswordGeneratorInterface
 {
@@ -14,6 +16,8 @@ class Sha1PasswordGenerator implements PasswordGeneratorInterface
     private $length = 20;
 
     /**
+     * @since [*next-version*]
+     *
      * @param int $length Values between 1 and 40 are valid
      */
     public function __construct($length = 20)
@@ -30,6 +34,8 @@ class Sha1PasswordGenerator implements PasswordGeneratorInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @return string
      */
     public function generatePassword()

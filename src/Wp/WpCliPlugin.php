@@ -9,6 +9,8 @@ use Exception;
 
 /**
  * Class WpCliPlugin.
+ *
+ * @since [*next-version*]
  */
 class WpCliPlugin implements PluginInterface
 {
@@ -18,6 +20,8 @@ class WpCliPlugin implements PluginInterface
     private $wp_cli;
 
     /**
+     * @since [*next-version*]
+     *
      * @param Command\WpCliCommandInterface $wp_cli
      */
     public function __construct(Command\WpCliCommandInterface $wp_cli)
@@ -26,6 +30,8 @@ class WpCliPlugin implements PluginInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @link http://wp-cli.org/commands/plugin/activate/
      *
      * @param string|array $plugin  The plugin slug or a list of slugs (e.g. 'multilingual-press', 'akismet' )
@@ -66,6 +72,8 @@ class WpCliPlugin implements PluginInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * Deactivates plugins. Note that plugins only gets deactivated when the plugins activation status matches the
      * given $option[ 'network' ] parameter.
      * If in doubt, check $this->isActive( 'plugin' ) and $this->isActive( 'plugin', ['network' => TRUE ] ) for
@@ -116,6 +124,8 @@ class WpCliPlugin implements PluginInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * Is installed means that the plugin is available for activation.
      *
      * @link http://wp-cli.org/commands/plugin/is-installed/
@@ -142,6 +152,8 @@ class WpCliPlugin implements PluginInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * Check if a plugin is active. Method will return FALSE if a plugin is active for network but the parameter
      * $option[ 'network' ] is omitted or set to 'FALSE'.
      *
@@ -171,6 +183,8 @@ class WpCliPlugin implements PluginInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * Run plugin uninstall hooks and remove plugin files (if $option[ 'delete' ] is set to TRUE).
      * Note: WP-CLI seems to have an issue, when a plugin is activated network-wide. To be save, you should check
      * the plugins status and deactivate it explicitly before.

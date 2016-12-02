@@ -12,6 +12,8 @@ use WpProvision\Wp;
  *
  * Temporary solution to quickly instantiate Wp-Command instances. It's in fact a 
  * courier anti-pattern and will be replaced by a IOC container
+ *
+ * @since [*next-version*]
  */
 class WpCliCommandProvider implements WpCommandProviderInterface
 {
@@ -25,6 +27,11 @@ class WpCliCommandProvider implements WpCommandProviderInterface
     private $site;
     private $user;
 
+    /**
+     * @since [*next-version*]
+     *
+     * @param \WpProvision\Command\WpCliCommandInterface $wp_cli
+     */
     public function __construct(Command\WpCliCommandInterface $wp_cli)
     {
         $this->wp_cli = $wp_cli;
@@ -35,6 +42,8 @@ class WpCliCommandProvider implements WpCommandProviderInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @return Wp\CoreInterface
      */
     public function core()
@@ -43,6 +52,8 @@ class WpCliCommandProvider implements WpCommandProviderInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @return Wp\PluginInterface
      */
     public function plugin()
@@ -51,6 +62,8 @@ class WpCliCommandProvider implements WpCommandProviderInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @return Wp\SiteInterface
      */
     public function site()
@@ -59,6 +72,8 @@ class WpCliCommandProvider implements WpCommandProviderInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @return Wp\UserInterface
      */
     public function user()

@@ -10,6 +10,8 @@ use LogicException;
 
 /**
  * Class WpCliSite.
+ *
+ * @since [*next-version*]
  */
 class WpCliSite implements SiteInterface
 {
@@ -29,6 +31,8 @@ class WpCliSite implements SiteInterface
     private $plugin;
 
     /**
+     * @since [*next-version*]
+     *
      * @param Command\WpCliCommandInterface $wp_cli
      * @param UserInterface                 $user
      * @param PluginInterface               $plugin
@@ -41,6 +45,8 @@ class WpCliSite implements SiteInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $url        The site url (e.g. example.dev/en/)
      * @param int    $network_id
      *
@@ -52,6 +58,8 @@ class WpCliSite implements SiteInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @link http://wp-cli.org/commands/site/list/
      *
      * @param string $url        The site url (e.g. example.dev/en/)
@@ -134,6 +142,8 @@ class WpCliSite implements SiteInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @link http://wp-cli.org/commands/site/create/
      *
      * @param string $url        (Site URL including protocol, e.g. https://whatever.mysite.tld/en/ )

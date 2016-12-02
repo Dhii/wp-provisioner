@@ -5,10 +5,14 @@ namespace WpProvision\Wp;
 
 /**
  * Interface Core.
+ *
+ * @since [*next-version*]
  */
 interface CoreInterface
 {
     /**
+     * @since [*next-version*]
+     *
      * @param bool $network If multisite is installed
      *
      * @return bool
@@ -16,6 +20,8 @@ interface CoreInterface
     public function isInstalled($network = false);
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $url      URL of the new site
      * @param array  $admin
      *                         string $admin[ 'email' ] (required)
@@ -31,6 +37,8 @@ interface CoreInterface
     public function install($url, array $admin, array $options = array(), $graceful = true);
 
     /**
+     * @since [*next-version*]
+     *
      * @param array $options
      *                       string $options[ 'base_path' ] Base URL path for all sites, default: '/'
      *                       string $options[ 'title' ] Title of the network
@@ -41,6 +49,8 @@ interface CoreInterface
     public function multisiteConvert(array $options = array());
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $url      The URL of the network (e.g. http://example.dev/)
      * @param array  $admin
      *                         string $admin[ 'email' ] (required)

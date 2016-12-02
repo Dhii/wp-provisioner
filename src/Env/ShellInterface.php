@@ -5,10 +5,14 @@ namespace WpProvision\Env;
 
 /**
  * Interface Shell.
+ *
+ * @since [*next-version*]
  */
 interface ShellInterface
 {
     /**
+     * @since [*next-version*]
+     *
      * @param $command
      *
      * @return bool
@@ -17,6 +21,8 @@ interface ShellInterface
 
     /**
      * Verify if a file exists and is executable.
+     *
+     * @since [*next-version*]
      *
      * @param $file
      *

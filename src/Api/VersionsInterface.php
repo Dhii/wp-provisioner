@@ -5,10 +5,14 @@ namespace WpProvision\Api;
 
 /**
  * Interface Versions.
+ *
+ * @since [*next-version*]
  */
 interface VersionsInterface
 {
     /**
+     * @since [*next-version*]
+     *
      * @param string $version
      *
      * @return bool
@@ -16,6 +20,8 @@ interface VersionsInterface
     public function versionExists($version);
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $version
      * @param bool   $isolation
      *
@@ -25,7 +31,9 @@ interface VersionsInterface
 
     /**
      * Register a provision routine.
-     * 
+     *
+     * @since [*next-version*]
+     *
      * @param string   $version
      * @param callable $callback
      * @param bool     $isolation

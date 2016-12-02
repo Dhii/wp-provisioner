@@ -13,6 +13,8 @@ use LogicException;
  * Usage example: To execute `wp site list` just run
  *
  * ( new WpCli() )->run( 'site list' );
+ *
+ * @since [*next-version*]
  */
 class WpCli implements WpCliCommandInterface
 {
@@ -37,6 +39,8 @@ class WpCli implements WpCliCommandInterface
     private $process_builder;
 
     /**
+     * @since [*next-version*]
+     *
      * @param Env\ShellInterface $shell
      * @param string             $bin_path
      */
@@ -71,6 +75,8 @@ class WpCli implements WpCliCommandInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @return string
      */
     public function base()
@@ -79,6 +85,8 @@ class WpCli implements WpCliCommandInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @return bool
      */
     public function commandExists()
@@ -91,6 +99,8 @@ class WpCli implements WpCliCommandInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @param array $arguments
      *
      * @return string

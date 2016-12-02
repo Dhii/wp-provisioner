@@ -7,6 +7,8 @@ use WpProvision\Process;
 
 /**
  * Class Bash.
+ *
+ * @since [*next-version*]
  */
 class Bash implements ShellInterface
 {
@@ -16,6 +18,8 @@ class Bash implements ShellInterface
     private $processBuilder;
 
     /**
+     * @since [*next-version*]
+     *
      * @param Process\ProcessBuilderInterface $processBuilder
      */
     public function __construct(Process\ProcessBuilderInterface $processBuilder)
@@ -24,6 +28,8 @@ class Bash implements ShellInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @param $command
      *
      * @return bool
@@ -50,6 +56,8 @@ class Bash implements ShellInterface
 
     /**
      * Verify if a file exists and is executable.
+     *
+     * @since [*next-version*]
      *
      * @param $file
      *

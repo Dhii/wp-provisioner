@@ -10,6 +10,8 @@ use Exception;
 
 /**
  * Class WpCliCore.
+ *
+ * @since [*next-version*]
  */
 class WpCliCore implements CoreInterface
 {
@@ -24,6 +26,8 @@ class WpCliCore implements CoreInterface
     private $pw_generator;
 
     /**
+     * @since [*next-version*]
+     *
      * @param Command\WpCliCommandInterface    $wp_cli
      * @param Utils\PasswordGeneratorInterface $pw_generator
      */
@@ -34,6 +38,8 @@ class WpCliCore implements CoreInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @link http://wp-cli.org/commands/core/is-installed/
      *
      * @param bool $network If multisite is installed
@@ -57,6 +63,8 @@ class WpCliCore implements CoreInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @link http://wp-cli.org/commands/core/install/
      *
      * @param string $url      URL of the new site
@@ -113,6 +121,8 @@ class WpCliCore implements CoreInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @link http://wp-cli.org/commands/core/multisite-convert/
      *
      * @param array $options
@@ -146,6 +156,8 @@ class WpCliCore implements CoreInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $url      The URL of the network (e.g. http://example.dev/)
      * @param array  $admin
      *                         string $admin[ 'email' ] (required)

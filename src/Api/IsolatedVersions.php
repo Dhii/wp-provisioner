@@ -10,6 +10,8 @@ use LogicException;
  *
  * Minimal implementation of the version list. This does not resolve consecutive version numbers (as planned
  * in the API concept)
+ *
+ * @since [*next-version*]
  */
 class IsolatedVersions implements VersionsInterface
 {
@@ -24,6 +26,8 @@ class IsolatedVersions implements VersionsInterface
     private $provider;
 
     /**
+     * @since [*next-version*]
+     *
      * @param WpCommandProviderInterface $provider
      */
     public function __construct(WpCommandProviderInterface $provider)
@@ -32,6 +36,8 @@ class IsolatedVersions implements VersionsInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $version
      *
      * @return bool
@@ -42,6 +48,8 @@ class IsolatedVersions implements VersionsInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $version
      * @param bool   $isolation
      *
@@ -58,6 +66,8 @@ class IsolatedVersions implements VersionsInterface
 
     /**
      * Register a provision routine.
+     *
+     * @since [*next-version*]
      *
      * @param string   $version
      * @param callable $callback

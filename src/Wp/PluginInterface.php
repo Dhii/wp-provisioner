@@ -5,10 +5,14 @@ namespace WpProvision\Wp;
 
 /**
  * Interface Plugin.
+ *
+ * @since [*next-version*]
  */
 interface PluginInterface
 {
     /**
+     * @since [*next-version*]
+     *
      * @param string|array $plugin  The plugin slug or a list of slugs (e.g. 'multilingual-press', 'akismet' )
      * @param array        $options
      *                              bool   $options[ 'network' ] If set to TRUE, the plugin gets activated networkwide, default: FALSE
@@ -20,6 +24,8 @@ interface PluginInterface
     public function activate($plugin, array $options = array());
 
     /**
+     * @since [*next-version*]
+     *
      * @param string|array $plugin  The plugin slug or a list of slugs (e.g. 'multilingual-press', 'akismet' )
      * @param array        $options
      *                              bool   $options[ 'network' ] If set to TRUE, the plugin gets activated network wide, default: FALSE
@@ -32,6 +38,8 @@ interface PluginInterface
     public function deactivate($plugin, array $options = array());
 
     /**
+     * @since [*next-version*]
+     *
      * Is installed means that the plugin is available for activation.
      *
      * @param string $plugin  The plugin slug (e.g. 'multilingual-press', 'akismet' )
@@ -42,6 +50,8 @@ interface PluginInterface
     public function isInstalled($plugin, array $options = array());
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $plugin  The plugin slug (e.g. 'multilingual-press', 'akismet' )
      * @param array  $options
      *                        bool   $options[ 'network' ]  Check if the plugin is activated network wide, default: FALSE
@@ -52,6 +62,8 @@ interface PluginInterface
     public function isActive($plugin, array $options = array());
 
     /**
+     * @since [*next-version*]
+     *
      * @param string|array $plugin  The plugin slug or a list of slugs (e.g. 'multilingual-press', 'akismet' )
      * @param array        $options
      *                              bool   $options[ 'deactivate' ] Deactivate plugin before uninstallation, default: TRUE

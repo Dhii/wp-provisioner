@@ -10,6 +10,8 @@ use Symfony\Component\Process\ProcessBuilder as SymfonyProcessBuilder;
  *
  * Adapts the Process\ProcessBuilder interface with the
  * Symfony ProcessBuilder implementation
+ *
+ * @since [*next-version*]
  */
 class SymfonyProcessBuilderAdapter
     extends SymfonyProcessBuilder

@@ -11,6 +11,8 @@ use LogicException;
 
 /**
  * Class Provision.
+ *
+ * @since [*next-version*]
  */
 class Provision extends SymfonyCommand\Command
 {
@@ -23,6 +25,8 @@ class Provision extends SymfonyCommand\Command
     private $versions;
 
     /**
+     * @since [*next-version*]
+     *
      * @param Api\VersionsInterface $versions
      * @param string                $name
      */
@@ -34,6 +38,8 @@ class Provision extends SymfonyCommand\Command
 
     /**
      * Configures the current command.
+     *
+     * @since [*next-version*]
      */
     protected function configure()
     {
@@ -57,6 +63,8 @@ class Provision extends SymfonyCommand\Command
      * as a concrete class. In this case, instead of defining the
      * execute() method, you set the code to execute by passing
      * a Closure to the setCode() method.
+     *
+     * @since [*next-version*]
      *
      * @param SymfonyInput\InputInterface   $input  An InputInterface instance
      * @param SymfonyOutput\OutputInterface $output An OutputInterface instance

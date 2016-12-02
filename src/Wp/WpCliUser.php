@@ -10,6 +10,8 @@ use InvalidArgumentException;
 
 /**
  * Class WpCliUser.
+ *
+ * @since [*next-version*]
  */
 class WpCliUser implements UserInterface
 {
@@ -19,6 +21,8 @@ class WpCliUser implements UserInterface
     private $wp_cli;
 
     /**
+     * @since [*next-version*]
+     *
      * @param Command\WpCliCommandInterface $wp_cli
      */
     public function __construct(Command\WpCliCommandInterface $wp_cli)
@@ -27,6 +31,8 @@ class WpCliUser implements UserInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @param string $email_or_login
      *
      * @return int
@@ -45,6 +51,8 @@ class WpCliUser implements UserInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @param bool $email_or_login
      *
      * @return bool
@@ -55,6 +63,8 @@ class WpCliUser implements UserInterface
     }
 
     /**
+     * @since [*next-version*]
+     *
      * @link http://wp-cli.org/commands/user/create/
      *
      * @param $login
