@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fb7bd5ac585fc2ff4ffbbad00673cb65",
-    "content-hash": "48ca54c36cc16e437de47b7b419d1c99",
+    "hash": "6af7ea8b004c3a460454cebe122de07b",
+    "content-hash": "00483ce1977b494d5fe5f576906d227b",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -312,16 +312,16 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "dev-master",
+            "version": "4.7.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "87ee2203ee24761873df907fb6712168516de56c"
+                "reference": "510ed1d82b0947c22b266d4deeee7abb2e25d930"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/87ee2203ee24761873df907fb6712168516de56c",
-                "reference": "87ee2203ee24761873df907fb6712168516de56c",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/510ed1d82b0947c22b266d4deeee7abb2e25d930",
+                "reference": "510ed1d82b0947c22b266d4deeee7abb2e25d930",
                 "shasum": ""
             },
             "require": {
@@ -343,10 +343,9 @@
             "homepage": "http://wordpress.org/",
             "keywords": [
                 "blog",
-                "cms",
-                "wordpress"
+                "cms"
             ],
-            "time": "2016-12-02 00:16:51"
+            "time": "2016-12-02 00:31:44"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -1677,6 +1676,115 @@
             "time": "2016-09-22 16:57:58"
         },
         {
+            "name": "composer/installers",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "b840fd2500dacddf0da3e6e4726001aaf103a020"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/b840fd2500dacddf0da3e6e4726001aaf103a020",
+                "reference": "b840fd2500dacddf0da3e6e4726001aaf103a020",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "https://composer.github.io/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Hurad",
+                "ImageCMS",
+                "Kanboard",
+                "MODX Evo",
+                "Mautic",
+                "OXID",
+                "Plentymarkets",
+                "Porto",
+                "RadPHP",
+                "SMF",
+                "Thelia",
+                "WolfCMS",
+                "agl",
+                "aimeos",
+                "annotatecms",
+                "attogram",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "cockpit",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "elgg",
+                "expressionengine",
+                "fuelphp",
+                "grav",
+                "installer",
+                "joomla",
+                "kohana",
+                "laravel",
+                "lithium",
+                "magento",
+                "mako",
+                "mediawiki",
+                "modulework",
+                "moodle",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "puppet",
+                "reindex",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "symfony",
+                "typo3",
+                "wordpress",
+                "yawik",
+                "zend",
+                "zikula"
+            ],
+            "time": "2016-11-23 19:56:18"
+        },
+        {
             "name": "dhii/php-cs-fixer-config",
             "version": "dev-php-5.3",
             "source": {
@@ -1715,6 +1823,45 @@
             ],
             "description": "A default PHP CS Fixer config implementation",
             "time": "2016-09-03 14:45:03"
+        },
+        {
+            "name": "dnaber/wp-provisioner",
+            "version": "1.0.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dnaber-de/wp-provisioner.git",
+                "reference": "4ea42243ccb9ea4d46899060fba174ec738f5f2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dnaber-de/wp-provisioner/zipball/4ea42243ccb9ea4d46899060fba174ec738f5f2e",
+                "reference": "4ea42243ccb9ea4d46899060fba174ec738f5f2e",
+                "shasum": ""
+            },
+            "require": {
+                "inpsyde/wp-cli-site-url": "~1.0",
+                "symfony/console": "~2.7",
+                "symfony/process": "~2.1",
+                "wp-cli/wp-cli": "~0.23"
+            },
+            "suggest": {
+                "wecodemore/wpstarter": "Easily bootstrap whole site Composer packages for WordPress."
+            },
+            "bin": [
+                "bin/wp-provisioner"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WpProvision\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Install and configure WordPress programmatic and continuable",
+            "time": "2016-05-18 11:15:15"
         },
         {
             "name": "doctrine/instantiator",
@@ -1923,6 +2070,48 @@
             ],
             "abandoned": "guzzlehttp/guzzle",
             "time": "2016-10-26 18:22:07"
+        },
+        {
+            "name": "oscarotero/env",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/env.git",
+                "reference": "0819fd764ca19ab880b8d9ed7a95ae4910f98f20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/env/zipball/0819fd764ca19ab880b8d9ed7a95ae4910f98f20",
+                "reference": "0819fd764ca19ab880b8d9ed7a95ae4910f98f20",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Env": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple library to consume environment variables",
+            "homepage": "https://github.com/oscarotero/env",
+            "keywords": [
+                "env"
+            ],
+            "time": "2016-05-08 17:14:32"
         },
         {
             "name": "padraic/humbug_get_contents",
@@ -2647,6 +2836,63 @@
             "time": "2014-01-02 16:42:27"
         },
         {
+            "name": "roots/wp-password-bcrypt",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/roots/wp-password-bcrypt.git",
+                "reference": "5cecd2e98ccc3193443cc5c5db9b3bc7abed5ffa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/roots/wp-password-bcrypt/zipball/5cecd2e98ccc3193443cc5c5db9b3bc7abed5ffa",
+                "reference": "5cecd2e98ccc3193443cc5c5db9b3bc7abed5ffa",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "brain/monkey": "^1.3.1",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.8.23|^5.2.9",
+                "squizlabs/php_codesniffer": "^2.5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "wp-password-bcrypt.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Scott Walkinshaw",
+                    "email": "scott.walkinshaw@gmail.com",
+                    "homepage": "https://github.com/swalkinshaw"
+                },
+                {
+                    "name": "qwp6t",
+                    "homepage": "https://github.com/qwp6t"
+                },
+                {
+                    "name": "Jan Pingel",
+                    "email": "jpingel@bitpiston.com",
+                    "homepage": "http://janpingel.com"
+                }
+            ],
+            "description": "WordPress plugin which replaces wp_hash_password and wp_check_password's phpass hasher with PHP 5.5's password_hash and password_verify using bcrypt.",
+            "homepage": "https://roots.io/plugins/wp-password-bcrypt",
+            "keywords": [
+                "wordpress wp bcrypt password"
+            ],
+            "time": "2016-03-01 16:27:06"
+        },
+        {
             "name": "satooshi/php-coveralls",
             "version": "1.0.x-dev",
             "source": {
@@ -3126,6 +3372,56 @@
             "time": "2016-11-19 20:35:20"
         },
         {
+            "name": "vlucas/phpdotenv",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "e5a077e823e5ea0b3714b78cd260738cd583aeeb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/e5a077e823e5ea0b3714b78cd260738cd583aeeb",
+                "reference": "e5a077e823e5ea0b3714b78cd260738cd583aeeb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dotenv\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause-Attribution"
+            ],
+            "authors": [
+                {
+                    "name": "Vance Lucas",
+                    "email": "vance@vancelucas.com",
+                    "homepage": "http://www.vancelucas.com"
+                }
+            ],
+            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
+            "keywords": [
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "time": "2016-11-28 23:08:37"
+        },
+        {
             "name": "webmozart/assert",
             "version": "dev-master",
             "source": {
@@ -3185,5 +3481,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": {
+        "php": ">=5.6"
+    }
 }
