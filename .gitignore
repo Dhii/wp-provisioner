@@ -2,5 +2,15 @@
 /nbproject/private/
 /test/coverage/
 /test/log/
-/wordpress/
-
+/web/
+/.vagrant
+/.composer-cache/
+/.env*
+/.github/
+/.editorconfig
+/.gitattributes
+/tmp/
+/config/
+/LICENSE.md
+/phpcs.xml
+/wp-cli.yml
