@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6af7ea8b004c3a460454cebe122de07b",
-    "content-hash": "00483ce1977b494d5fe5f576906d227b",
+    "hash": "b7e833bc3f7e343e8c86b684bf6697f7",
+    "content-hash": "08e92ed737664feada559fbd4d96e4e2",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1786,23 +1786,24 @@
         },
         {
             "name": "dhii/php-cs-fixer-config",
-            "version": "dev-php-5.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/php-cs-fixer-config.git",
-                "reference": "ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca"
+                "reference": "aef10e47f184ae206ff13c847ccc634b4ae87635"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/php-cs-fixer-config/zipball/ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca",
-                "reference": "ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca",
+                "url": "https://api.github.com/repos/Dhii/php-cs-fixer-config/zipball/aef10e47f184ae206ff13c847ccc634b4ae87635",
+                "reference": "aef10e47f184ae206ff13c847ccc634b4ae87635",
                 "shasum": ""
             },
             "require": {
                 "friendsofphp/php-cs-fixer": ">=1.11 <1.12",
-                "php": "^5.3 | ^7.0"
+                "php": "^5.4 | ^7.0"
             },
             "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
                 "phpunit/phpunit": "^4.8"
             },
             "type": "library",
@@ -1822,7 +1823,7 @@
                 }
             ],
             "description": "A default PHP CS Fixer config implementation",
-            "time": "2016-09-03 14:45:03"
+            "time": "2016-09-03 14:20:46"
         },
         {
             "name": "dnaber/wp-provisioner",
@@ -3470,6 +3471,26 @@
                 "validate"
             ],
             "time": "2016-11-23 20:04:41"
+        },
+        {
+            "name": "wpackagist-theme/twentysixteen",
+            "version": "1.3",
+            "source": {
+                "type": "svn",
+                "url": "https://themes.svn.wordpress.org/twentysixteen/",
+                "reference": "1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/theme/twentysixteen.1.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-theme",
+            "homepage": "https://wordpress.org/themes/twentysixteen/"
         }
     ],
     "aliases": [],
