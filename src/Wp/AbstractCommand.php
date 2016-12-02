@@ -58,6 +58,28 @@ class AbstractCommand
     }
 
     /**
+     * Processes options, cleans and flattens them, groups them with arguments, and adds essential command parts.
+     *
+     * @since [*next-version*]
+     *
+     * @param string[] $args    Arguments to the main command.
+     * @param mixed[]  $options Additional options to the command.
+     *
+     * @return string[] An array of command parts that is ready to be run.
+     */
+    protected function _prepareCmdParts($args = [], $options = [])
+    {
+        $options = $this->_processOptions($options);
+        $options = $this->_flattenOptions($options);
+
+        $parts = array_merge($args, $options);
+        $parts = $this->_removeNull($parts);
+        $parts = $this->_getCmdParts($parts);
+
+        return $parts;
+    }
+
+    /**
      * Remove all null values from an array.
      *
      * @since [*next-version*]
