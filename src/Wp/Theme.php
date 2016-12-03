@@ -43,11 +43,9 @@ class Theme extends CommandBase implements ThemeInterface
     }
 
     /**
-     * @param type $theme
-     * @param type $options
+     * @inheritdoc
      *
-     * @return mixed[] An array with status data. The structure is different depending on whether the $theme is passed.
-     *                 If present, the result is an array with
+     * @since [*next-version*]
      */
     public function getStatus($theme = null, $options = [])
     {
@@ -79,6 +77,17 @@ class Theme extends CommandBase implements ThemeInterface
     {
     }
 
+    /**
+     * Parse the output of a status check on a sinlge theme.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $output The output of the status check.
+     * @return array An array with the following indices (see class constants):
+     *  K_NAME, K_STATUS, K_VERSION, K_AUTHOR, K_SLUG. The value of K_STATUS may be one of the following:
+     *  STATUS_ACTIVE, STATUS_INACTIVE, * (original unmodified).
+     * @throws RuntimeException If output cannot be parsed.
+     */
     protected function _parseSingleStatusOutput($output)
     {
         $output = trim($output);
@@ -116,6 +125,17 @@ class Theme extends CommandBase implements ThemeInterface
         return $info;
     }
 
+    /**
+     * Parse the output of a status check on multiple themes.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $output The output of the status check.
+     * @return array[] A set of arrays (by slug), each of which contains the following keys (see class constants):
+     *  K_SLUG, K_STATUS, K_VERSION. The value of K_STATUS may be one of the following:
+     *  STATUS_ACTIVE, STATUS_INACTIVE, * (original unmodified).
+     * @throws RuntimeException If output cannot be parsed.
+     */
     protected function _parseMultipleStatusOutput($output)
     {
         $output = trim($output);
