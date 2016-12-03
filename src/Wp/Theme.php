@@ -156,12 +156,15 @@ class Theme extends CommandBase implements ThemeInterface
      */
     protected function _normalizeStatusString($status)
     {
+        $origStatus = $status;
         $status = strtolower(trim($status));
 
         if (in_array($status, ['a', 'active'], true)) {
             $status = self::STATUS_ACTIVE;
         } elseif (in_array($status, ['i', 'inactive', true])) {
             $status = self::STATUS_INACTIVE;
+        } else {
+            $status = $origStatus;
         }
 
         return $status;
