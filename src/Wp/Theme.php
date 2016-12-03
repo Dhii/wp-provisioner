@@ -42,6 +42,13 @@ class Theme extends CommandBase implements ThemeInterface
     {
     }
 
+    /**
+     * @param type $theme
+     * @param type $options
+     *
+     * @return mixed[] An array with status data. The structure is different depending on whether the $theme is passed.
+     *                 If present, the result is an array with
+     */
     public function getStatus($theme = null, $options = [])
     {
         $args = [
@@ -102,7 +109,8 @@ class Theme extends CommandBase implements ThemeInterface
             $info[$key] = $value;
         }
 
-        $info['slug'] = $slug;
+        $info[self::K_SLUG]   = $slug;
+        $info[self::K_STATUS] = $this->_normalizeStatusString($info[self::K_STATUS]);
 
         return $info;
     }
@@ -125,17 +133,39 @@ class Theme extends CommandBase implements ThemeInterface
                 throw new RuntimeException(sprintf('%1$s: line %2$d format not recognized: %3$s', $err, $_idx, $_line));
             }
 
-            $status  = trim($parts[0]);
+            $status  = $this->_normalizeStatusString($parts[0]);
             $slug    = trim($parts[1]);
             $version = trim($parts[2]);
 
             $info[$slug] = [
-                'slug'    => $slug,
-                'status'  => $status,
-                'version' => $version,
+                self::K_SLUG    => $slug,
+                self::K_STATUS  => $status,
+                self::K_VERSION => $version,
             ];
         }
 
         return $info;
+    }
+
+    /**
+     * Converts a status string into one of the defined representations.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $status One of the STATUS_* class constants.
+     */
+    protected function _normalizeStatusString($status)
+    {
+        $status = strtolower(trim($status));
+
+        if (in_array($status, ['a', 'active'], true)) {
+            $status = self::STATUS_ACTIVE;
+        } elseif (in_array($status, ['i', 'inactive', true])) {
+            $status = self::STATUS_INACTIVE;
+        } else {
+            $status = self::STATUS_UNKNOWN;
+        }
+
+        return $status;
     }
 }

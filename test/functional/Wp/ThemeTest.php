@@ -3,6 +3,7 @@
 namespace Dhii\WpProvisioner\FuncTest\Wp;
 
 use Dhii\WpProvision\Wp\Theme;
+use Dhii\WpProvision\Wp\ThemeInterface;
 use Dhii\WpProvision\Process\SymfonyProcessBuilderAdapter;
 use Dhii\WpProvision\Env\Bash;
 
@@ -96,13 +97,13 @@ class ThemeTest extends \Xpmock\TestCase
         $subject = $this->createInstance($this->createWpCli());
 
         $status = $subject->getStatus('twentysixteen');
-        $this->assertTrue($status === [
-            'name'              => 'Twenty Sixteen',
-            'status'            => 'Inactive',
-            'version'           => '1.3',
-            'author'            => 'the WordPress team',
-            'slug'              => 'twentysixteen'
-        ], 'Could not correctly determine single theme status');
+        $this->assertEquals([
+            ThemeInterface::K_NAME      => 'Twenty Sixteen',
+            ThemeInterface::K_STATUS    => ThemeInterface::STATUS_INACTIVE,
+            ThemeInterface::K_VERSION   => '1.3',
+            ThemeInterface::K_AUTHOR    => 'the WordPress team',
+            ThemeInterface::K_SLUG      => 'twentysixteen'
+        ], $status, 'Could not correctly determine single theme status');
     }
 
     /**
@@ -116,9 +117,9 @@ class ThemeTest extends \Xpmock\TestCase
 
         $status = $subject->getStatus(null);
         $this->assertContains([
-            'slug'              => 'twentysixteen',
-            'status'            => 'I',
-            'version'           => '1.3'
+            ThemeInterface::K_SLUG      => 'twentysixteen',
+            ThemeInterface::K_STATUS    => ThemeInterface::STATUS_INACTIVE,
+            ThemeInterface::K_VERSION   => '1.3'
         ], $status, 'Could not correctly determine multiple theme status');
     }
 }
