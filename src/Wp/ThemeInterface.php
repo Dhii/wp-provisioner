@@ -26,6 +26,8 @@ interface ThemeInterface
      *
      * @param string   $theme   The slug of the theme to activate.
      * @param string[] $options Additional options.
+     *
+     * @return \Dhii\WpProvision\Api\CommandResultInterface Result of the activation command.
      */
     public function activate($theme, $options = []);
 
