@@ -162,8 +162,6 @@ class Theme extends CommandBase implements ThemeInterface
             $status = self::STATUS_ACTIVE;
         } elseif (in_array($status, ['i', 'inactive', true])) {
             $status = self::STATUS_INACTIVE;
-        } else {
-            $status = self::STATUS_UNKNOWN;
         }
 
         return $status;
