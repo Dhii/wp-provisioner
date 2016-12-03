@@ -14,6 +14,7 @@ class Theme extends CommandBase implements ThemeInterface
 {
     const CMD          = 'theme';
     const CMD_STATUS   = 'status';
+    const CMD_ACTIVATE = 'activate';
 
     /**
      * @since [*next-version*]
@@ -26,8 +27,32 @@ class Theme extends CommandBase implements ThemeInterface
         $this->_construct();
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
     public function activate($theme, $options = [])
     {
+        $args = [
+            static::CMD_ACTIVATE,
+            trim($theme),
+        ];
+
+        $options = $this->_removeEmpty($options);
+        $parts   = $this->_prepareCmdParts($args, $options);
+
+        $me   = $this;
+        $info = $this->_runCommand(function () use ($me, $parts) {
+            $output = $this->_getWpCli()->run($parts);
+
+            $info = $this->_parseActivationOutput($output);
+            $res = $me->_createCommandResult($info[self::MSG_K_STATUS], $info[self::MSG_K_TEXT], [], $output);
+
+            return $res;
+        });
+
+        return $info;
     }
 
     public function delete($theme, $options = [])
@@ -192,5 +217,19 @@ class Theme extends CommandBase implements ThemeInterface
         }
 
         return $status;
+    }
+
+    /**
+     * Converts theme activation output into a standardized data structure.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $output Output of a theme activation command.
+     *
+     * @return string[] An array with 2 keys: MSG_K_STATUS, MSK_KEY_TEXT.
+     */
+    protected function _parseActivationOutput($output)
+    {
+        return $this->_parseWpcliStatusMessage($output);
     }
 }

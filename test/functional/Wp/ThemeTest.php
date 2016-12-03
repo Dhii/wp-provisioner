@@ -139,4 +139,12 @@ class ThemeTest extends \Xpmock\TestCase
             ThemeInterface::K_VERSION   => '1.3'
         ], $status, 'Could not correctly determine multiple theme status');
     }
+
+    public function testActivate()
+    {
+        $subject = $this->createInstance($this->createWpCli());
+        $theme = 'twentysixteen';
+        $res = $subject->activate($theme);
+        var_dump($res);
+    }
 }
