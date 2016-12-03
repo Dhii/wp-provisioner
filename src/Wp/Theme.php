@@ -111,6 +111,7 @@ class Theme extends CommandBase implements ThemeInterface
 
         $info[self::K_SLUG]   = $slug;
         $info[self::K_STATUS] = $this->_normalizeStatusString($info[self::K_STATUS]);
+        $info[$slug] = $info;
 
         return $info;
     }

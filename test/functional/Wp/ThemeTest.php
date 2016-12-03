@@ -96,7 +96,10 @@ class ThemeTest extends \Xpmock\TestCase
     {
         $subject = $this->createInstance($this->createWpCli());
 
-        $status = $subject->getStatus('twentysixteen');
+        $theme = 'twentysixteen';
+        $status = $subject->getStatus($theme);
+        $this->assertArrayHasKey($theme, $status, 'Status result set did not contain required key');
+        $status = array_pop($status);
         $this->assertEquals([
             ThemeInterface::K_NAME      => 'Twenty Sixteen',
             ThemeInterface::K_STATUS    => ThemeInterface::STATUS_INACTIVE,
@@ -115,9 +118,11 @@ class ThemeTest extends \Xpmock\TestCase
     {
         $subject = $this->createInstance($this->createWpCli());
 
+        $theme = 'twentysixteen';
         $status = $subject->getStatus(null);
+        $this->assertArrayHasKey($theme, $status, 'Status result set did not contain required key');
         $this->assertContains([
-            ThemeInterface::K_SLUG      => 'twentysixteen',
+            ThemeInterface::K_SLUG      => $theme,
             ThemeInterface::K_STATUS    => ThemeInterface::STATUS_INACTIVE,
             ThemeInterface::K_VERSION   => '1.3'
         ], $status, 'Could not correctly determine multiple theme status');
