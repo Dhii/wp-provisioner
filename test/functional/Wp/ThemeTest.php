@@ -32,6 +32,18 @@ class ThemeTest extends \Xpmock\TestCase
     }
 
     /**
+     * Puts WP into a specific state that is needed for testing theme commands.
+     *
+     * @since [*next-version*]
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $wp=  realpath(WP_CLI_ROOT . '/../../../vendor/bin/wp');
+        exec($wp . ' theme activate --quiet twentyfifteen 2> /dev/null');
+    }
+
+    /**
      * Creates a new instance of the WP CLI command.
      *
      * @since [*next-version*]
