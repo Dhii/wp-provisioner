@@ -12,8 +12,8 @@ use Dhii\WpProvision\Command;
  */
 class Theme extends CommandBase implements ThemeInterface
 {
-    const CMD        = 'theme';
-    const CMD_STATUS = 'status';
+    const CMD          = 'theme';
+    const CMD_STATUS   = 'status';
 
     /**
      * @since [*next-version*]
@@ -43,7 +43,7 @@ class Theme extends CommandBase implements ThemeInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @since [*next-version*]
      */
@@ -83,10 +83,12 @@ class Theme extends CommandBase implements ThemeInterface
      * @since [*next-version*]
      *
      * @param string $output The output of the status check.
-     * @return array An array with the following indices (see class constants):
-     *  K_NAME, K_STATUS, K_VERSION, K_AUTHOR, K_SLUG. The value of K_STATUS may be one of the following:
-     *  STATUS_ACTIVE, STATUS_INACTIVE, * (original unmodified).
+     *
      * @throws RuntimeException If output cannot be parsed.
+     *
+     * @return array An array with the following indices (see class constants):
+     *               K_NAME, K_STATUS, K_VERSION, K_AUTHOR, K_SLUG. The value of K_STATUS may be one of the following:
+     *               STATUS_ACTIVE, STATUS_INACTIVE, * (original unmodified).
      */
     protected function _parseSingleStatusOutput($output)
     {
@@ -120,7 +122,7 @@ class Theme extends CommandBase implements ThemeInterface
 
         $info[self::K_SLUG]   = $slug;
         $info[self::K_STATUS] = $this->_normalizeStatusString($info[self::K_STATUS]);
-        $info[$slug] = $info;
+        $info[$slug]          = $info;
 
         return $info;
     }
@@ -131,10 +133,12 @@ class Theme extends CommandBase implements ThemeInterface
      * @since [*next-version*]
      *
      * @param string $output The output of the status check.
-     * @return array[] A set of arrays (by slug), each of which contains the following keys (see class constants):
-     *  K_SLUG, K_STATUS, K_VERSION. The value of K_STATUS may be one of the following:
-     *  STATUS_ACTIVE, STATUS_INACTIVE, * (original unmodified).
+     *
      * @throws RuntimeException If output cannot be parsed.
+     *
+     * @return array[] A set of arrays (by slug), each of which contains the following keys (see class constants):
+     *                 K_SLUG, K_STATUS, K_VERSION. The value of K_STATUS may be one of the following:
+     *                 STATUS_ACTIVE, STATUS_INACTIVE, * (original unmodified).
      */
     protected function _parseMultipleStatusOutput($output)
     {
@@ -177,7 +181,7 @@ class Theme extends CommandBase implements ThemeInterface
     protected function _normalizeStatusString($status)
     {
         $origStatus = $status;
-        $status = strtolower(trim($status));
+        $status     = strtolower(trim($status));
 
         if (in_array($status, ['a', 'active'], true)) {
             $status = self::STATUS_ACTIVE;

@@ -79,8 +79,8 @@ interface ThemeInterface
      * @param string[] $options Additional options.
      *
      * @return string[][] An array of arrays (by theme slug) with status keys and values.
-     *  If $theme is passed, the keys will be K_NAME, K_STATUS, K_VERSION, K_AUTHOR, K_SLUG.
-     *  If $theme is not passed, the keys will only be K_SLUG, K_STATUS, K_VERSION.
+     *                    If $theme is passed, the keys will be K_NAME, K_STATUS, K_VERSION, K_AUTHOR, K_SLUG.
+     *                    If $theme is not passed, the keys will only be K_SLUG, K_STATUS, K_VERSION.
      */
     public function getStatus($theme = null, $options = []);
 
