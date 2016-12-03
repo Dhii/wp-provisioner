@@ -2,6 +2,8 @@
 
 namespace Dhii\WpProvision\Wp;
 
+use RuntimeException;
+
 /**
  * A base for all commands that expose a common command interface.
  *
@@ -11,6 +13,9 @@ namespace Dhii\WpProvision\Wp;
  */
 abstract class CommandBase extends AbstractCommand implements CommandInterface
 {
+    const MSG_K_STATUS = 'status';
+    const MSG_K_TEXT   = 'text';
+
     /**
      * @since [*next-version*]
      *
@@ -119,5 +124,42 @@ abstract class CommandBase extends AbstractCommand implements CommandInterface
         }
 
         return $this->optionValueMap;
+    }
+
+    /**
+     * Converts a WP CLI status message into a structure.
+     *
+     * Many times, WP CLI will output a status message after running a command, such as:
+     * Success: Theme 'twentysixtee' activated.
+     *
+     * This method helps determine what happened, based on that message.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $message The status message to parse.
+     * @return string[] An info array with 2 members:
+     * MSG_K_STATUS and MSG_K_TEXT, which contain the status and the text of the status message respectively.
+     * @throws RuntimeException
+     */
+    public function _parseWpcliStatusMessage($message)
+    {
+        $message = trim($message);
+        $parts   = explode(':', $message);
+        if (!count($parts)) {
+            throw new RuntimeException(sprintf('Could not parse WP CLI status message: %1$s', $message));
+        }
+
+        $text = array_shift($parts);
+        if (count($parts) > 0) {
+            $status = $text;
+            $text   = array_shift($parts);
+        }
+
+        $info = [
+            self::MSG_K_STATUS => trim($status),
+            self::MSG_K_TEXT   => trim($text),
+        ];
+
+        return $info;
     }
 }
