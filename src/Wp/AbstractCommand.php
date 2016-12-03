@@ -23,6 +23,13 @@ class AbstractCommand
     protected $wpCli;
 
     /**
+     * @since [*next-version*]
+     *
+     * @var bool
+     */
+    protected $isOutput;
+
+    /**
      * Parameterless private constructor.
      *
      * @since [*next-version*]
@@ -570,5 +577,42 @@ class AbstractCommand
     protected function _normalizeTrim($option, $key)
     {
         return trim($option);
+    }
+
+    /**
+     * Write message to log.
+     *
+     * @since [*next-version*]
+     *
+     * @param type $message
+     *
+     * @return \Dhii\WpProvision\Wp\AbstractCommand
+     */
+    protected function _log($message)
+    {
+        if ($this->_isOutput()) {
+            echo $message;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get or set whether log entries should be output.
+     *
+     * @since [*next-version*]
+     *
+     * @param bool|null $isOutput Whether output is on. If null, will retrieve only.
+     *
+     * @return bool Whether the output is on. If setting, returns whether it was on before.
+     */
+    protected function _isOutput($isOutput = null)
+    {
+        $wasOutput = $this->isOutput;
+        if (!is_null($isOutput)) {
+            $this->isOutput = (bool) $isOutput;
+        }
+
+        return $wasOutput;
     }
 }
