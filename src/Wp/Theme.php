@@ -148,7 +148,6 @@ class Theme extends CommandBase implements ThemeInterface
         $info = [];
         foreach ($lines as $_idx => $_line) {
             $_line = trim($_line);
-            var_dump($_line);
             $parts = preg_split('![\s]+!', $_line);
             if (count($parts) < 3) {
                 throw new RuntimeException(sprintf('%1$s: line %2$d format not recognized: %3$s', $err, $_idx, $_line));
