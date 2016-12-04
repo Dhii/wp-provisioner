@@ -5,7 +5,7 @@ namespace Dhii\WpProvision;
 
 $base_dir = dirname( __DIR__ );
 
-require_once $base_dir . '/src/Api/WpProvisioner.php';
+require_once $base_dir . '/src/Api/WpProvisionerInterface.php';
 require_once $base_dir . '/src/Api/WpProvisionerLoader.php';
 
 $api = new Api\WpProvisionerLoader( $base_dir );
