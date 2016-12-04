@@ -10,7 +10,7 @@ use Dhii\WpProvision\Command;
  *
  * @since [*next-version*]
  */
-class AbstractCommand
+abstract class AbstractCommand
 {
     /** @since [*next-version*] */
     const CMD = '';
