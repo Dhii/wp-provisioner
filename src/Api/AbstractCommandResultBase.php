@@ -91,17 +91,16 @@ abstract class AbstractCommandResultBase extends AbstractCommandResult implement
      */
     public function _normalizeWpcliStatus($status)
     {
-        $origStatus = $status;
-        $status     = strtolower(trim($status));
+        $status = strtolower(trim($status));
 
-        if (in_array($status, ['success', self::MSG_STATUS_SUCCESS])) {
-            $status = self::MSG_STATUS_SUCCESS;
-        } elseif (in_array($status, ['warning', self::MSG_STATUS_WARNING])) {
-            $status = self::MSG_STATUS_WARNING;
-        } elseif (in_array($status, ['error', self::MSG_STATUS_ERROR])) {
-            $status = self::MSG_STATUS_ERROR;
+        if (in_array($status, ['success', self::STATUS_SUCCESS])) {
+            $status = self::STATUS_SUCCESS;
+        } elseif (in_array($status, ['warning', self::STATUS_WARNING])) {
+            $status = self::STATUS_WARNING;
+        } elseif (in_array($status, ['error', self::STATUS_ERROR])) {
+            $status = self::STATUS_ERROR;
         } else {
-            $status = self::MSG_STATUS_INFO;
+            $status = self::STATUS_INFO;
         }
 
         return $status;
