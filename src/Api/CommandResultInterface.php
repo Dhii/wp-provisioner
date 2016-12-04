@@ -7,13 +7,8 @@ namespace Dhii\WpProvision\Api;
  *
  * @since [*next-version*]
  */
-interface CommandResultInterface
+interface CommandResultInterface extends StatusAwareInterface
 {
-    const MSG_STATUS_INFO    = 'info';
-    const MSG_STATUS_SUCCESS = 'success';
-    const MSG_STATUS_WARNING = 'warn';
-    const MSG_STATUS_ERROR   = 'error';
-
     /**
      * A status message of the command.
      *
@@ -31,15 +26,6 @@ interface CommandResultInterface
      * @return string The command output.
      */
     public function getText();
-
-    /**
-     * A status code of the command.
-     *
-     * @since [*next-version*]
-     *
-     * @return string|null
-     */
-    public function getStatus();
 
     /**
      * Data retrieved from the command.
