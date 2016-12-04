@@ -19,8 +19,7 @@
     "require": {
         "symfony/console": "~2.7",
         "symfony/process": "~2.1",
-        "inpsyde/wp-cli-site-url": "~1.0",
-        "wp-cli/wp-cli": "~0.23"
+        "inpsyde/wp-cli-site-url": "~1.0"
     },
     "require-dev": {
         "dhii/php-cs-fixer-config": "dev-master",
@@ -34,7 +33,8 @@
         "roots/wp-password-bcrypt": "1.0.0",
         "johnpbloch/wordpress": "^4.6.1",
         "wpackagist-theme/twentysixteen": "^1.3",
-        "wpackagist-theme/twentyfifteen": "^1.6"
+        "wpackagist-theme/twentyfifteen": "^1.6",
+        "wp-cli/wp-cli": "~0.23"
     },
     "extra": {
     "installer-paths": {
