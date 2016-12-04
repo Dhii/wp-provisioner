@@ -615,4 +615,15 @@ abstract class AbstractCommand
 
         return $wasOutput;
     }
+
+    /**
+     * Create an instance of the output object.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $text The output text.
+     *
+     * @return Output\OutputInterface The output object instance.
+     */
+    abstract protected function _createOutput($text);
 }

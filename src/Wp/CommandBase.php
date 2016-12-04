@@ -5,6 +5,8 @@ namespace Dhii\WpProvision\Wp;
 use RuntimeException;
 use Dhii\WpProvision\Api;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Dhii\WpProvision\Command;
+use Dhii\WpProvision\Output;
 
 /**
  * A base for all commands that expose a common command interface.
@@ -221,10 +223,20 @@ abstract class CommandBase extends AbstractCommand implements CommandInterface
      * @param mixed[] $data    Data passed from the command. Usually the result of parsing.
      * @param string  $text    Full output of the command.
      *
-     * @return \Dhii\WpProvision\Api\CommandResult
+     * @return Api\CommandResult
      */
     protected function _createCommandResult($status, $message = null, $data = [], $text = null)
     {
         return new Api\CommandResult($status, $message, $data, $text);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    protected function _createOutput($text)
+    {
+        return new Command\GenericOutput($text);
     }
 }
