@@ -17,9 +17,12 @@ abstract class AbstractCommandResultBase extends AbstractCommandResult implement
      * @param mixed[] $data    Data passed from the command. Usually the result of parsing.
      * @param string  $text    Full output of the command.
      */
-    public function __construct($status, $message = null, $data = [], $text = null)
+    public function __construct($status = null, $message = null, $data = [], $text = null)
     {
-        $this->_setStatus($this->_normalizeWpcliStatus($status));
+        $status = is_null($status)
+            ? $status
+            : $this->_normalizeWpcliStatus($status);
+        $this->_setStatus($status);
         $this->_setMessage($message);
         $this->_setData($data);
         $this->_setText($text);
