@@ -161,6 +161,10 @@ class AbstractCommandResult
      */
     protected function _isSuccess()
     {
-        return $this->_getStatus() === CommandResultInterface::MSG_STATUS_SUCCESS;
+        return in_array($this->_getStatus(), [
+            CommandResultInterface::STATUS_SUCCESS,
+            CommandResultInterface::STATUS_INFO,
+            CommandResultInterface::STATUS_WARNING,
+        ], true);
     }
 }
