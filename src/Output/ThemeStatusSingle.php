@@ -2,7 +2,6 @@
 
 namespace Dhii\WpProvision\Output;
 
-use RuntimeException;
 use Dhii\WpProvision\Model\ThemeInterface;
 
 /**
@@ -31,7 +30,7 @@ class ThemeStatusSingle extends AbstractThemeStatus
 
         $matches = [];
         if (!preg_match('!Theme ([^\s]+) details!', $header, $matches)) {
-            throw new RuntimeException(sprintf('%1$s: header "%2$s" could not be matched', $err, $header));
+            throw new ParsingException(sprintf('%1$s: header "%2$s" could not be matched', $err, $header));
         }
 
         $slug = $matches[1];
@@ -41,7 +40,7 @@ class ThemeStatusSingle extends AbstractThemeStatus
             $_line = trim($_line);
             $parts = explode(':', $_line);
             if (count($parts) < 2) {
-                throw new RuntimeException(sprintf('%1$s: line %2$d format not recognized: %3$s', $err, $_idx, $_line));
+                throw new ParsingException(sprintf('%1$s: line %2$d format not recognized: %3$s', $err, $_idx, $_line));
             }
             $key   = trim($parts[0]);
             $value = trim($parts[1]);

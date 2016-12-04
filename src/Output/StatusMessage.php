@@ -2,8 +2,6 @@
 
 namespace Dhii\WpProvision\Output;
 
-use RuntimeException;
-
 /**
  * Represents a WP CLI status message.
  *
@@ -152,7 +150,7 @@ class StatusMessage implements StatusMessageInterface
         $message = trim($message);
         $parts   = explode(':', $message);
         if (!count($parts)) {
-            throw new RuntimeException(sprintf('Could not parse WP CLI status message: %1$s', $message));
+            throw new ParsingException(sprintf('Could not parse WP CLI status message: %1$s', $message));
         }
 
         $text   = array_shift($parts);
