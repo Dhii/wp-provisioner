@@ -17,9 +17,6 @@ use Dhii\WpProvision\Output;
  */
 abstract class CommandBase extends AbstractCommand implements CommandInterface
 {
-    const MSG_K_STATUS = 'status';
-    const MSG_K_TEXT   = 'text';
-
     /**
      * @since [*next-version*]
      *
@@ -131,43 +128,6 @@ abstract class CommandBase extends AbstractCommand implements CommandInterface
     }
 
     /**
-     * Converts a WP CLI status message into a structure.
-     *
-     * Many times, WP CLI will output a status message after running a command, such as:
-     * Success: Theme 'twentysixtee' activated.
-     *
-     * This method helps determine what happened, based on that message.
-     *
-     * @since [*next-version*]
-     *
-     * @param string $message The status message to parse.
-     * @return string[] An info array with 2 members:
-     * MSG_K_STATUS and MSG_K_TEXT, which contain the status and the text of the status message respectively.
-     * @throws RuntimeException
-     */
-    public function _parseWpcliStatusMessage($message)
-    {
-        $message = trim($message);
-        $parts   = explode(':', $message);
-        if (!count($parts)) {
-            throw new RuntimeException(sprintf('Could not parse WP CLI status message: %1$s', $message));
-        }
-
-        $text = array_shift($parts);
-        if (count($parts) > 0) {
-            $status = $text;
-            $text   = array_shift($parts);
-        }
-
-        $info = [
-            self::MSG_K_STATUS => trim($status),
-            self::MSG_K_TEXT   => trim($text),
-        ];
-
-        return $info;
-    }
-
-    /**
      * Runs a command, abstracting details.
      *
      * @since [*next-version*]
@@ -182,17 +142,18 @@ abstract class CommandBase extends AbstractCommand implements CommandInterface
             throw new RuntimeException(sprintf('Could not run command: command must be callable'));
         }
 
-        $status  = Api\CommandResultInterface::MSG_STATUS_INFO;
+        $status  = null;
         $message = null;
         $result  = null;
         ob_start();
         try {
             $result = call_user_func_array($cmd, []);
         } catch (ProcessFailedException $e) {
-            $status = Api\CommandResultInterface::MSG_STATUS_ERROR;
+            echo $e->getProcess()->getErrorOutput();
+            $status = Api\StatusAwareInterface::STATUS_ERROR;
         }
 
-        $output = ob_end_clean();
+        $output = ob_get_clean();
         $data   = $result;
 
         if ($result instanceof Api\CommandResultInterface) {
@@ -202,10 +163,18 @@ abstract class CommandBase extends AbstractCommand implements CommandInterface
             if (!is_null($cmdMessage = $result->getMessage())) {
                 $message = $cmdMessage;
             }
-            if (!is_null($cmdStatus = $result->getStatus())) {
+            // Only set if not null to preserve error status if exception thrown
+            if (is_null($status) && !is_null($cmdStatus = $result->getStatus())) {
                 $status = $cmdStatus;
             }
             $data = $result->getData();
+        }
+
+        if (is_null($message) && $data instanceof Output\StatusMessageInterface) {
+            $message = $data;
+        }
+        if (is_null($status) && $message instanceof Api\StatusAwareInterface) {
+            $status = $message->getStatus();
         }
 
         $result = $this->_createCommandResult($status, $message, $data, $output);
