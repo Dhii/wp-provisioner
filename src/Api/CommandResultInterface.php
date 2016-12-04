@@ -32,7 +32,7 @@ interface CommandResultInterface extends StatusAwareInterface
      *
      * @since [*next-version*]
      *
-     * @return mixed[][]
+     * @return mixed|null The data.
      */
     public function getData();
 

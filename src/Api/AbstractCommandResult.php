@@ -113,7 +113,7 @@ class AbstractCommandResult
      */
     protected function _setData($key, $value = null)
     {
-        if (is_array($key)) {
+        if (!is_string($key)) {
             $this->data = $key;
 
             return $this;
