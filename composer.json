@@ -33,7 +33,8 @@
         "oscarotero/env": "^1.0",
         "roots/wp-password-bcrypt": "1.0.0",
         "johnpbloch/wordpress": "^4.6.1",
-        "wpackagist-theme/twentysixteen": "^1.3"
+        "wpackagist-theme/twentysixteen": "^1.3",
+        "wpackagist-theme/twentyfifteen": "^1.6"
     },
     "extra": {
     "installer-paths": {
