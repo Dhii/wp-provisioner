@@ -39,4 +39,11 @@ interface WpCommandProviderInterface
      * @return Wp\UserInterface
      */
     public function user();
+
+    /**
+     * @since [*next-version*]
+     *
+     * @return Wp\ThemeInterface
+     */
+    public function theme();
 }

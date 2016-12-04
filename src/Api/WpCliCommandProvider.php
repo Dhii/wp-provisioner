@@ -26,6 +26,7 @@ class WpCliCommandProvider implements WpCommandProviderInterface
     private $plugin;
     private $site;
     private $user;
+    protected $theme;
 
     /**
      * @since [*next-version*]
@@ -39,6 +40,7 @@ class WpCliCommandProvider implements WpCommandProviderInterface
         $this->plugin = new Wp\WpCliPlugin($wp_cli);
         $this->user   = new Wp\WpCliUser($wp_cli);
         $this->site   = new Wp\WpCliSite($wp_cli, $this->user, $this->plugin);
+        $this->theme  = new Wp\Theme($wp_cli);
     }
 
     /**
@@ -79,5 +81,15 @@ class WpCliCommandProvider implements WpCommandProviderInterface
     public function user()
     {
         return $this->user;
+    }
+
+    /**
+     * @inheritdoc
+     *
+     * @since [*next-version*]
+     */
+    public function theme()
+    {
+        return $this->theme;
     }
 }
