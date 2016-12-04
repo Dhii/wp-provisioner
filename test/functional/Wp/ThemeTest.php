@@ -197,4 +197,19 @@ class ThemeTest extends \Xpmock\TestCase
         $this->assertTrue($result->isSuccess(), 'Command was not determined to be successful');
         $this->assertEquals(StatusAwareInterface::STATUS_SUCCESS, $result->getStatus(), 'Command status could not be correctly determines');
     }
+
+    /**
+     * Tests what happens if activation fails.
+     *
+     * @since [*next-version*]
+     */
+    public function testActivateFailure()
+    {
+        $subject = $this->createInstance($this->createWpCli());
+        $theme = 'non-existing-theme';
+        $result = $subject->activate($theme);
+        $this->assertInstanceOf('Dhii\\WpProvision\\Api\\CommandResultInterface', $result, 'Command did not produce a valid result type');
+        $this->assertFalse($result->isSuccess(), 'Command was not determined to be failed');
+        $this->assertEquals(StatusAwareInterface::STATUS_ERROR, $result->getStatus(), 'Command status could not be correctly determined');
+    }
 }
