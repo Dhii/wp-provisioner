@@ -131,6 +131,19 @@ class ThemeTest extends \Xpmock\TestCase
         $this->assertEquals($slug, $theme->getSlug(), 'Incorrect theme slug determined');
     }
 
+    public function testGetStatusSingleFailure()
+    {
+        $subject = $this->createInstance($this->createWpCli());
+
+        $slug = 'asdsad';
+        $result = $subject->getStatus($slug);
+        $this->assertInstanceOf('Dhii\\WpProvision\\Api\\CommandResultInterface', $result, 'Command did not produce a valid result type');
+        $this->assertFalse($result->isSuccess(), 'Status check result success could not be determined correctly');
+        $this->assertEquals(StatusAwareInterface::STATUS_ERROR, $result->getStatus(), 'Status check result status could not be determined correctly');
+        $this->assertFalse($result->isSuccess(), 'Status check result status could not be determined correctly');
+        $themeSet = $result->getData();
+    }
+
     /**
      * Tests whether or not the test subject can retrieve the status of multiple themes.
      *
