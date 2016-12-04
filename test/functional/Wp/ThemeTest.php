@@ -3,9 +3,10 @@
 namespace Dhii\WpProvisioner\FuncTest\Wp;
 
 use Dhii\WpProvision\Wp\Theme;
-use Dhii\WpProvision\Wp\ThemeInterface;
 use Dhii\WpProvision\Process\SymfonyProcessBuilderAdapter;
 use Dhii\WpProvision\Env\Bash;
+use Dhii\WpProvision\Model;
+use Dhii\WpProvision\Api\StatusAwareInterface;
 
 /**
  * Tests {@see Theme}.
@@ -104,21 +105,30 @@ class ThemeTest extends \Xpmock\TestCase
      *
      * @since [*next-version*]
      */
-    public function testGetStatusSingle()
+    public function testGetStatusSingleSuccess()
     {
         $subject = $this->createInstance($this->createWpCli());
+        $themeClass = 'Dhii\\WpProvision\\Model\\Theme';
 
-        $theme = 'twentysixteen';
-        $status = $subject->getStatus($theme);
-        $this->assertArrayHasKey($theme, $status, 'Status result set did not contain required key');
-        $status = array_pop($status);
-        $this->assertEquals([
-            ThemeInterface::K_NAME      => 'Twenty Sixteen',
-            ThemeInterface::K_STATUS    => ThemeInterface::STATUS_INACTIVE,
-            ThemeInterface::K_VERSION   => '1.3',
-            ThemeInterface::K_AUTHOR    => 'the WordPress team',
-            ThemeInterface::K_SLUG      => 'twentysixteen'
-        ], $status, 'Could not correctly determine single theme status');
+        $slug = 'twentysixteen';
+        $result = $subject->getStatus($slug);
+        $this->assertInstanceOf('Dhii\\WpProvision\\Api\\CommandResultInterface', $result, 'Command did not produce a valid result type');
+        $this->assertTrue($result->isSuccess(), 'Status check result success could not be determined correctly');
+        $this->assertEquals(StatusAwareInterface::STATUS_INFO, $result->getStatus(), 'Status check result status could not be determined correctly');
+        $themeSet = $result->getData();
+        $this->assertArrayHasKey($slug, $themeSet, 'Status result set did not contain required theme');
+        $this->assertContainsOnlyInstancesOf($themeClass, $themeSet, 'Status result set contained invalid items');
+        $this->assertCount(1, $themeSet, 'Status result set contained wrong number of items');
+        $theme = $themeSet[$slug];
+
+        $this->assertInstanceOf($themeClass, $theme, 'A valid theme could not be retrieved');
+        $this->assertEquals('Twenty Sixteen', $theme->getName(), 'Incorrect theme name determined');
+        $this->assertEquals(Model\ThemeInterface::STATUS_INACTIVE, $theme->getStatus(), 'Incorrect theme status determined');
+        $this->assertFalse($theme->isActive(), 'Incorrect theme activity determined');
+        $this->assertTrue($theme->isInstalled(), 'Incorrect theme presence determined');
+        $this->assertEquals('1.3', $theme->getVersion(), 'Incorrect theme version determined');
+        $this->assertEquals('the WordPress team', $theme->getAuthor(), 'Incorrect theme author determined');
+        $this->assertEquals($slug, $theme->getSlug(), 'Incorrect theme slug determined');
     }
 
     /**
@@ -128,23 +138,50 @@ class ThemeTest extends \Xpmock\TestCase
      */
     public function testGetStatusMultiple()
     {
+        $themeClass = 'Dhii\\WpProvision\\Model\\Theme';
         $subject = $this->createInstance($this->createWpCli());
 
-        $theme = 'twentysixteen';
-        $status = $subject->getStatus(null);
-        $this->assertArrayHasKey($theme, $status, 'Status result set did not contain required key');
-        $this->assertContains([
-            ThemeInterface::K_SLUG      => $theme,
-            ThemeInterface::K_STATUS    => ThemeInterface::STATUS_INACTIVE,
-            ThemeInterface::K_VERSION   => '1.3'
-        ], $status, 'Could not correctly determine multiple theme status');
+        $slug = 'twentysixteen';
+        $result = $subject->getStatus();
+        $this->assertInstanceOf('Dhii\\WpProvision\\Api\\CommandResultInterface', $result, 'Command did not produce a valid result type');
+        $this->assertTrue($result->isSuccess(), 'Status check result success could not be determined correctly');
+        $this->assertEquals(StatusAwareInterface::STATUS_INFO, $result->getStatus(), 'Status check result status could not be determined correctly');
+        $themeSet = $result->getData();
+        $this->assertArrayHasKey($slug, $themeSet, 'Status result set did not contain required theme');
+        $this->assertContainsOnlyInstancesOf($themeClass, $themeSet, 'Status result set contained invalid items');
+        $this->assertGreaterThan(1, count($themeSet), 'Status result set contained wrong number of items');
+        $theme = $themeSet[$slug];
+
+        $this->assertInstanceOf($themeClass, $theme, 'A valid theme could not be retrieved');
+        $this->assertEquals(Model\ThemeInterface::STATUS_INACTIVE, $theme->getStatus(), 'Incorrect theme status determined');
+        $this->assertFalse($theme->isActive(), 'Incorrect theme activity determined');
+        $this->assertTrue($theme->isInstalled(), 'Incorrect theme presence determined');
+        $this->assertEquals('1.3', $theme->getVersion(), 'Incorrect theme version determined');
+        $this->assertEquals($slug, $theme->getSlug(), 'Incorrect theme slug determined');
+
+        $slug = 'twentyfifteen';
+        $theme = $themeSet[$slug];
+        $this->assertInstanceOf($themeClass, $theme, 'A valid theme could not be retrieved');
+        $this->assertEquals(Model\ThemeInterface::STATUS_ACTIVE, $theme->getStatus(), 'Incorrect theme status determined');
+        $this->assertTrue($theme->isActive(), 'Incorrect theme activity determined');
+        $this->assertTrue($theme->isInstalled(), 'Incorrect theme presence determined');
+        $this->assertEquals('1.6', $theme->getVersion(), 'Incorrect theme version determined');
+        $this->assertEquals($slug, $theme->getSlug(), 'Incorrect theme slug determined');
     }
 
+    /**
+     * Tests whether a theme can be successfully activated with expected results.
+     *
+     * @since [*next-version*]
+     */
     public function testActivate()
     {
         $subject = $this->createInstance($this->createWpCli());
         $theme = 'twentysixteen';
-        $res = $subject->activate($theme);
-        var_dump($res);
+        $result = $subject->activate($theme);
+        $this->assertInstanceOf('Dhii\\WpProvision\\Api\\CommandResultInterface', $result, 'Command did not produce a valid result type');
+        $this->assertInstanceOf('Dhii\\WpProvision\Output\\StatusMessageInterface', $result->getMessage());
+        $this->assertTrue($result->isSuccess(), 'Command was not determined to be successful');
+        $this->assertEquals(StatusAwareInterface::STATUS_SUCCESS, $result->getStatus(), 'Command was not determined to be successful');
     }
 }
