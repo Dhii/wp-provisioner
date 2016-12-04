@@ -17,10 +17,6 @@ interface ThemeInterface
     const K_AUTHOR  = 'author';
     const K_SLUG    = 'slug';
 
-    const STATUS_ACTIVE   = 'active';
-    const STATUS_INACTIVE = 'inactive';
-    const STATUS_UNKNOWN  = 'unknown';
-
     /**
      * Provides access to the `activate` subcommand.
      *
