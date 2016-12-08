@@ -36,7 +36,7 @@ class Theme implements ThemeInterface
             $this->_setVersion($data[self::K_VERSION]);
 
         isset($data[self::K_UPDATES]) &&
-            $this->_setVersion($data[self::K_UPDATES]);
+            $this->_setUpdateStatus($data[self::K_UPDATES]);
 
         isset($data[self::K_AUTHOR]) &&
             $this->_setAuthor($data[self::K_AUTHOR]);
