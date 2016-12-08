@@ -6,6 +6,9 @@ namespace Dhii\WpProvision\Command;
 use Dhii\WpProvision\Env;
 use Dhii\WpProvision\Process;
 use LogicException;
+use Dhii\WpProvision\Api;
+use Dhii\WpProvision\Output;
+use Symfony\Component\Process\Process as CoreProcess;
 
 /**
  * Wrapper for WP-CLI command.
@@ -99,25 +102,56 @@ class WpCli implements WpCliCommandInterface
     }
 
     /**
+     * Run a WP CLI command, and retrieve its result.
+     *
      * @since [*next-version*]
      *
-     * @param array $arguments
+     * @param array $arguments The arguments to add to the command.
+     *                         They will be quoted, and joined together with a space.
      *
-     * @return string
+     * @return Api\CommandResultInterface The result of running the command.
      */
-    public function run(array $arguments = [])
+    public function run(array $arguments = [], $stdIn = null)
     {
         if (!$this->commandExists()) {
             throw new LogicException("The base command {$this->base()} does not exists or is not executable.");
         }
 
-        $process = $this
-            ->process_builder
+        $process = $this->process_builder
             ->setArguments([]) // reset the process builder state
             ->setArguments($arguments)
-            ->getProcess()
-            ->mustRun();
+            ->getProcess();
 
-        return $process->getOutput();
+        // A way to potentially provide data to the process while running
+        if (!is_null($stdIn)) {
+            $process->setInput($stdIn);
+        }
+
+        // Combined stdin and stderr output
+        $output = '';
+        $process->run(function ($type, $buffer) use (&$output) {
+            $output .= $buffer;
+        });
+
+        // Uniform way of returning data about command result
+        $result = $this->_createCommandResult($process, $output);
+
+        return $result;
+    }
+
+    /**
+     * Creates a new instance of an object that represents the result of a command.
+     *
+     * @since [*next-version*]
+     *
+     * @param CoreProcess                   $process The process that the command created.
+     * @param string|Output\OutputInterface $output  Output of the process.
+     * @param string                        $status  Status of the result.
+     *
+     * @return Api\CommandResultInterface This instance.
+     */
+    protected function _createCommandResult(CoreProcess $process,  $output = null, $status = null)
+    {
+        return new Api\CommandResult($process, $output, $status);
     }
 }

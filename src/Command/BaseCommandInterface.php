@@ -3,6 +3,8 @@
 
 namespace Dhii\WpProvision\Command;
 
+use Dhii\WpProvision\Api\CommandResultInterface;
+
 /**
  * Interface BaseCommand.
  *
@@ -31,7 +33,7 @@ interface BaseCommandInterface
      *
      * @param array $arguments
      *
-     * @return string
+     * @return string|CommandResultInterface
      */
     public function run(array $arguments = []);
 }

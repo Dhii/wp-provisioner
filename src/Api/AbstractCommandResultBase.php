@@ -2,6 +2,9 @@
 
 namespace Dhii\WpProvision\Api;
 
+use Symfony\Component\Process\Process;
+use Dhii\WpProvision\Output;
+
 /**
  * Base API functionality of a command result.
  *
@@ -12,20 +15,20 @@ abstract class AbstractCommandResultBase extends AbstractCommandResult implement
     /**
      * @since [*next-version*]
      *
-     * @param string  $status  Status of the command. One of the {@see CommandResultInterface}::MSG_STATUS_* constants.
-     * @param string  $message Status message.
-     * @param mixed[] $data    Data passed from the command. Usually the result of parsing.
-     * @param string  $text    Full output of the command.
+     * @param Process                       $process The process that the command created.
+     * @param string|Output\OutputInterface $output  Output of the process.
+     * @param string                        $status  Status of the result.
+     *                                               One of the {@see StatusAwareInterface}::STATUS_* constants.
      */
-    public function __construct($status = null, $message = null, $data = [], $text = null)
+    public function __construct($process, $output = null, $status = null)
     {
         $status = is_null($status)
             ? $status
             : $this->_normalizeWpcliStatus($status);
+
+        $this->_setProcess($process);
+        $this->_setOutput($output);
         $this->_setStatus($status);
-        $this->_setMessage($message);
-        $this->_setData($data);
-        $this->_setText($text);
 
         $this->_construct();
     }
@@ -35,29 +38,9 @@ abstract class AbstractCommandResultBase extends AbstractCommandResult implement
      *
      * @since [*next-version*]
      */
-    public function getData()
+    public function getOutput()
     {
-        return $this->_getData();
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
-    public function getMessage()
-    {
-        return $this->_getMessage();
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
-    public function getText()
-    {
-        return $this->_getText();
+        return $this->_getOutput();
     }
 
     /**
@@ -67,7 +50,54 @@ abstract class AbstractCommandResultBase extends AbstractCommandResult implement
      */
     public function getStatus()
     {
-        return $this->_getStatus();
+        return $this->_getStatusFallback();
+    }
+
+    /**
+     * Retrieve the status, falling back on other data.
+     *
+     * If the status is not set for this instance, attempts to infer it from the output.
+     *
+     * @since [*next-version*]
+     *
+     * @return string|null The status code, if any.
+     */
+    protected function _getStatusFallback()
+    {
+        if (!is_null($status = $this->_getStatus())) {
+            return $status;
+        }
+
+        $status = $this->_getStatusFromOutput();
+        $status = $this->_normalizeWpcliStatus($status);
+
+        return $status;
+    }
+
+    /**
+     * Attempts to infer the status from output.
+     *
+     * If the output has a status message, gets its status.
+     *
+     * @since [*next-version*]
+     *
+     * @return string|null The status code, if any.
+     */
+    protected function _getStatusFromOutput()
+    {
+        if (!(($output = $this->getOutput()) instanceof Output\OutputInterface)) {
+            return;
+        }
+
+        if (!(($data = $output->getData()) instanceof Output\StatusMessageInterface)) {
+            return;
+        }
+
+        if (is_null($status = $data->getStatus())) {
+            return;
+        }
+
+        return $status;
     }
 
     /**
@@ -77,7 +107,41 @@ abstract class AbstractCommandResultBase extends AbstractCommandResult implement
      */
     public function isSuccess()
     {
-        return $this->_isSuccess();
+        return $this->_isStatusSuccessful($this->_getStatusFallback());
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function getProcess()
+    {
+        return $this->_getProcess();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function getData()
+    {
+        if (!is_null($output = $this->_getOutput())) {
+            return $output->getData();
+        }
+
+        return;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function __toString()
+    {
+        return (string) $this->_getOutput();
     }
 
     /**
