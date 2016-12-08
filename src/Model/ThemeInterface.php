@@ -20,6 +20,10 @@ interface ThemeInterface
     const STATUS_INACTIVE    = 'inactive';
     const STATUS_UNKNOWN     = 'unknown';
     const STATUS_UNINSTALLED = 'uninstalled';
+    const STATUS_UPDATE = 'update';
+
+    const UPDATE_AVAILABLE = 'available';
+    const UPDATE_UNAVAILABLE = 'unavailable';
 
     /**
      * Retrieves the slug of the theme.
@@ -65,6 +69,15 @@ interface ThemeInterface
      * @return string|null The theme update status code.
      */
     public function getUpdateStatus();
+
+    /**
+     * Determines whether an upate is available for the theme.
+     *
+     * @since [*next-version*]
+     *
+     * @return bool True if an update is available for this theme; false otherwise.
+     */
+    public function isUpdateAvailable();
 
     /**
      * Retrieves the author info of the theme.

@@ -165,4 +165,14 @@ class Theme implements ThemeInterface
     {
         return in_array($this->getStatus(), [ThemeInterface::STATUS_ACTIVE, ThemeInterface::STATUS_INACTIVE], true);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function isUpdateAvailable()
+    {
+        return in_array($this->getUpdateStatus(), [ThemeInterface::UPDATE_AVAILABLE], true);
+    }
 }
