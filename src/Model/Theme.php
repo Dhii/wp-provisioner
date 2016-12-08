@@ -13,7 +13,7 @@ class Theme implements ThemeInterface
     protected $slug;
     protected $status;
     protected $version;
-    protected $updates;
+    protected $updateStatus;
     protected $author;
 
     public function __construct(array $data = [])
@@ -100,14 +100,14 @@ class Theme implements ThemeInterface
      *
      * @since [*next-version*]
      */
-    public function getUpdates()
+    public function getUpdateStatus()
     {
-        return $this->updates;
+        return $this->updateStatus;
     }
 
-    protected function _setUpdates($updates)
+    protected function _setUpdateStatus($updateStatus)
     {
-        $this->updates = $updates;
+        $this->updateStatus = $updateStatus;
 
         return $this;
     }

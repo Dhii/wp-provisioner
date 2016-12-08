@@ -64,7 +64,7 @@ interface ThemeInterface
      *
      * @return string|null The theme update status code.
      */
-    public function getUpdates();
+    public function getUpdateStatus();
 
     /**
      * Retrieves the author info of the theme.
