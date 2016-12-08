@@ -29,6 +29,7 @@ class ThemeStatusMultiple extends AbstractThemeStatus
         $kSlug    = ThemeInterface::K_SLUG;
         $kVersion = ThemeInterface::K_VERSION;
         $kStatus  = ThemeInterface::K_STATUS;
+        $kUpdates = ThemeInterface::K_UPDATES;
 
         $info = [];
         foreach ($lines as $_idx => $_line) {
@@ -38,14 +39,31 @@ class ThemeStatusMultiple extends AbstractThemeStatus
                 throw new ParsingException(sprintf('%1$s: line %2$d format not recognized: %3$s', $err, $_idx, $_line));
             }
 
-            $status  = $this->_normalizeStatusString($parts[0]);
+            $statusSet  = $this->_normalizeStatusString($parts[0]);
             $slug    = trim($parts[1]);
             $version = trim($parts[2]);
+
+            $status = ThemeInterface::STATUS_UNKNOWN;
+            if (in_array(ThemeInterface::STATUS_ACTIVE, $statusSet, true)) {
+                $status = ThemeInterface::STATUS_ACTIVE;
+            }
+            elseif (in_array(ThemeInterface::STATUS_INACTIVE, $statusSet, true)) {
+                $status = ThemeInterface::STATUS_INACTIVE;
+            }
+
+            $updateStatus = ThemeInterface::STATUS_UNKNOWN;
+            if (in_array(ThemeInterface::UPDATE_AVAILABLE, $statusSet, true)) {
+                $updateStatus = ThemeInterface::UPDATE_AVAILABLE;
+            }
+            elseif (in_array(ThemeInterface::UPDATE_UNAVAILABLE, $statusSet, true)) {
+                $updateStatus = ThemeInterface::UPDATE_UNAVAILABLE;
+            }
 
             $info[$slug] = $this->_createTheme([
                 $kSlug    => $slug,
                 $kStatus  => $status,
                 $kVersion => $version,
+                $kUpdates => $updateStatus,
             ]);
         }
 
