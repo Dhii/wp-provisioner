@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fca5ea643ffb4acc0cdf570994d42028",
-    "content-hash": "4b10f8e6dada2fcdb2d490d8564f9a2a",
+    "hash": "8159798fb394b9ddfad17e7d1ca10390",
+    "content-hash": "44f196983ef53f99bff2df657ec7b718",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -3483,7 +3483,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/theme/twentyfifteen.1.6.zip",
-                "reference": null,
+                "reference": "1.6",
                 "shasum": null
             },
             "require": {
