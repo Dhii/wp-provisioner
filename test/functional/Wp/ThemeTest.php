@@ -193,7 +193,7 @@ class ThemeTest extends \Xpmock\TestCase
         $theme = 'twentysixteen';
         $result = $subject->activate($theme);
         $this->assertInstanceOf('Dhii\\WpProvision\\Api\\CommandResultInterface', $result, 'Command did not produce a valid result type');
-        $this->assertInstanceOf('Dhii\\WpProvision\Output\\StatusMessageInterface', $result->getMessage());
+        $this->assertInstanceOf('Dhii\\WpProvision\Output\\OutputInterface', $result->getOutput());
         $this->assertTrue($result->isSuccess(), 'Command was not determined to be successful');
         $this->assertEquals(StatusAwareInterface::STATUS_SUCCESS, $result->getStatus(), 'Command status could not be correctly determines');
     }
