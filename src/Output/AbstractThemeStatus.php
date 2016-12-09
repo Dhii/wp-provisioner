@@ -24,7 +24,6 @@ abstract class AbstractThemeStatus extends AbstractOutputBase
         $origStatus = $status;
         $status     = strtolower(trim($status));
 
-        $statiDetected = [];
         $statiToCheck = [
             Model\ThemeInterface::STATUS_INACTIVE       => [
                 Model\ThemeInterface::STATUS_INACTIVE,
@@ -44,19 +43,57 @@ abstract class AbstractThemeStatus extends AbstractOutputBase
             ],
         ];
 
-        $d = '!';
-        foreach ($statiToCheck as $_detected => $_toCheck) {
-            $count = 0;
-            array_walk($_toCheck, function(&$v, $k) use ($d) { return preg_quote($v, $d); });
-            $regex = $d . implode('|', $_toCheck) . $d . 'im';
-            $status = preg_replace($regex, '', $status, -1, $count);
+        $statiDetected = $this->_detectTokens($status, $statiToCheck);
 
-            if ($count) {
-                $statiDetected[$_detected] = $_detected;
+        return $statiDetected;
+    }
+
+    /**
+     * Determine the tokens from a pre-defined set which are present in a string.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $string The string, where tokens should be detected.
+     * @param array[] $map A map of token codes to their representations.
+     *  The key is token code.
+     *  The value is an array of possible representations.
+     * @return string All tokens found in the string.
+     */
+    protected function _detectTokens($string, $map)
+    {
+        $d = '!';
+        $dictionary = [];
+        foreach ($map as $_token => $_values) {
+            foreach ($_values as $_value) {
+                $dictionary[$_value] = $_token;
             }
         }
 
-        return $statiDetected;
+        // Sort representations by longest first
+        uksort($dictionary, function($a, $b) {
+            $lenA = strlen($a);
+            $lenB = strlen($b);
+
+            if ($lenA === $lenB) {
+                return 0;
+            }
+
+            return $lenA > $lenB
+                ? -1
+                : 1;
+        });
+
+        $detected = [];
+        foreach ($dictionary as $_value => $_token) {
+            $count = 0;
+            $pattern = $d . preg_quote($_value, $d) . $d . 'm';
+            preg_replace($pattern, '', $string, 1, $count);
+            if ($count) {
+                $detected[$_token] = $_token;
+            }
+        }
+
+        return $detected;
     }
 
     /**
