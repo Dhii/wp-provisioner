@@ -21,9 +21,9 @@ class ThemeStatusMultiple extends AbstractThemeStatus
         $output = trim($output);
         $lines  = explode(str_repeat(PHP_EOL, 2), $output);
         $footer = array_pop($lines);
-        $body   = $lines;
-        $lines  = explode(PHP_EOL, trim(array_shift($body)));
+        $lines  = explode(PHP_EOL, trim(array_shift($lines)));
         $header = array_shift($lines);
+        $body   = $lines;
         $err    = 'Could not parse multiple themes status output';
 
         $kSlug    = ThemeInterface::K_SLUG;
