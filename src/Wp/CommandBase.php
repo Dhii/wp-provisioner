@@ -4,9 +4,9 @@ namespace Dhii\WpProvision\Wp;
 
 use RuntimeException;
 use Dhii\WpProvision\Api;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 use Dhii\WpProvision\Command;
 use Dhii\WpProvision\Output;
+use Symfony\Component\Process\Process;
 
 /**
  * A base for all commands that expose a common command interface.
@@ -142,42 +142,7 @@ abstract class CommandBase extends AbstractCommand implements CommandInterface
             throw new RuntimeException(sprintf('Could not run command: command must be callable'));
         }
 
-        $status  = null;
-        $message = null;
-        $result  = null;
-        ob_start();
-        try {
-            $result = call_user_func_array($cmd, []);
-        } catch (ProcessFailedException $e) {
-            echo $e->getProcess()->getErrorOutput();
-            $status = Api\StatusAwareInterface::STATUS_ERROR;
-        }
-
-        $output = ob_get_clean();
-        $data   = $result;
-
-        if ($result instanceof Api\CommandResultInterface) {
-            if (!is_null($cmdOut = $result->getText())) {
-                $output = $cmdOut;
-            }
-            if (!is_null($cmdMessage = $result->getMessage())) {
-                $message = $cmdMessage;
-            }
-            // Only set if not null to preserve error status if exception thrown
-            if (is_null($status) && !is_null($cmdStatus = $result->getStatus())) {
-                $status = $cmdStatus;
-            }
-            $data = $result->getData();
-        }
-
-        if (is_null($message) && $data instanceof Output\StatusMessageInterface) {
-            $message = $data;
-        }
-        if (is_null($status) && $message instanceof Api\StatusAwareInterface) {
-            $status = $message->getStatus();
-        }
-
-        $result = $this->_createCommandResult($status, $message, $data, $output);
+        $result = call_user_func_array($cmd, []);
 
         return $result;
     }
@@ -187,16 +152,15 @@ abstract class CommandBase extends AbstractCommand implements CommandInterface
      *
      * @since [*next-version*]
      *
-     * @param string  $status  Status of the command. One of the {@see CommandResultInterface}::MSG_STATUS_* constants.
-     * @param string  $message Status message.
-     * @param mixed[] $data    Data passed from the command. Usually the result of parsing.
-     * @param string  $text    Full output of the command.
+     * @param Process                       $process The process that the command created.
+     * @param string|Output\OutputInterface $output  Output of the process.
+     * @param string                        $status  Status of the result.
      *
-     * @return Api\CommandResult
+     * @return Api\CommandResultInterface
      */
-    protected function _createCommandResult($status, $message = null, $data = [], $text = null)
+    protected function _createCommandResult(Process $process, $output = null, $status = null)
     {
-        return new Api\CommandResult($status, $message, $data, $text);
+        return new Api\CommandResult($process, $output, $status);
     }
 
     /**

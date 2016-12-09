@@ -5,7 +5,6 @@ namespace Dhii\WpProvision\Wp;
 use RuntimeException;
 use Dhii\WpProvision\Command;
 use Dhii\WpProvision\Output;
-use Dhii\WpProvision\Api\StatusAwareInterface;
 
 /**
  * Provides means of manipulating WP themes.
@@ -46,11 +45,10 @@ class Theme extends CommandBase implements ThemeInterface
 
         $me     = $this;
         $result = $this->_runCommand(function () use ($me, $parts) {
-            $output = $me->_getWpCli()->run($parts);
-            echo $output;
+            $result = $me->_getWpCli()->run($parts);
+            $output = $result->getOutput();
             $output = $me->_parseActivationOutput($output);
-            $data = $output->getData();
-            $res = $me->_createCommandResult(null, null, $data, $output);
+            $res = $me->_createCommandResult($result->getProcess(), $output);
 
             return $res;
         });
@@ -87,16 +85,13 @@ class Theme extends CommandBase implements ThemeInterface
         $me      = $this;
 
         $res = $this->_runCommand(function () use ($me, $parts, $theme) {
-            $output = $this->_getWpCli()->run($parts);
-            echo $output;
+            $result = $me->_getWpCli()->run($parts);
+            $output = $result->getOutput();
 
             $output = is_null($theme)
                 ? $this->_parseMultipleStatusOutput($output)
                 : $this->_parseSingleStatusOutput($output);
-            $header = $output->getHeader();
-            $data = $output->getData();
-
-            $res = $me->_createCommandResult(StatusAwareInterface::STATUS_INFO, $header, $data, $output);
+            $res = $me->_createCommandResult($result->getProcess(), $output);
 
             return $res;
         });
