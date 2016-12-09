@@ -52,9 +52,9 @@ class ThemeStatusSingle extends AbstractThemeStatus
             $info[$key] = $value;
         }
 
-        $info[$kSlug]   = $slug;
+        $info[$kSlug] = $slug;
 
-        $stati = $this->_normalizeStatusString($info[$kStatus]);
+        $stati          = $this->_normalizeStatusString($info[$kStatus]);
         $info[$kStatus] = $this->_getStatusFromSet($stati);
 
         $versionString = $info[$kVersion];
@@ -69,7 +69,7 @@ class ThemeStatusSingle extends AbstractThemeStatus
             $matches = [];
             preg_match('!update ([\w]*)!mi', $versionPieces[1], $matches);
             if (count($matches[1])) {
-                $updateStati = $this->_normalizeStatusString($matches[1]);
+                $updateStati  = $this->_normalizeStatusString($matches[1]);
                 $updateStatus = $this->_getUpdateStatusFromSet($updateStati);
             }
         }

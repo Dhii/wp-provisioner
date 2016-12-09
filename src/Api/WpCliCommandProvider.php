@@ -84,7 +84,7 @@ class WpCliCommandProvider implements WpCommandProviderInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @since [*next-version*]
      */

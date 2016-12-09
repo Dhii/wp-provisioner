@@ -20,9 +20,9 @@ interface ThemeInterface
     const STATUS_INACTIVE    = 'inactive';
     const STATUS_UNKNOWN     = 'unknown';
     const STATUS_UNINSTALLED = 'uninstalled';
-    const STATUS_UPDATE = 'update';
+    const STATUS_UPDATE      = 'update';
 
-    const UPDATE_AVAILABLE = 'available';
+    const UPDATE_AVAILABLE   = 'available';
     const UPDATE_UNAVAILABLE = 'unavailable';
 
     /**

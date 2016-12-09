@@ -17,7 +17,7 @@ abstract class AbstractThemeStatus extends AbstractOutputBase
      * @since [*next-version*]
      *
      * @param string[] $status A set of STATUS_* class constants.
-     *  If status unrecognized, array is empty.
+     *                         If status unrecognized, array is empty.
      */
     protected function _normalizeStatusString($status)
     {
@@ -25,21 +25,21 @@ abstract class AbstractThemeStatus extends AbstractOutputBase
         $status     = strtolower(trim($status));
 
         $statiToCheck = [
-            Model\ThemeInterface::STATUS_INACTIVE       => [
+            Model\ThemeInterface::STATUS_INACTIVE => [
                 Model\ThemeInterface::STATUS_INACTIVE,
                 'i',
-                'inactive'
+                'inactive',
             ],
-            Model\ThemeInterface::STATUS_ACTIVE         => [
+            Model\ThemeInterface::STATUS_ACTIVE => [
                 Model\ThemeInterface::STATUS_ACTIVE,
                 'a',
-                'active'
+                'active',
             ],
-            Model\ThemeInterface::STATUS_UPDATE         => [
+            Model\ThemeInterface::STATUS_UPDATE => [
                 Model\ThemeInterface::STATUS_UPDATE,
                 'u',
                 'update',
-                'available'
+                'available',
             ],
         ];
 
@@ -53,15 +53,16 @@ abstract class AbstractThemeStatus extends AbstractOutputBase
      *
      * @since [*next-version*]
      *
-     * @param string $string The string, where tokens should be detected.
-     * @param array[] $map A map of token codes to their representations.
-     *  The key is token code.
-     *  The value is an array of possible representations.
+     * @param string  $string The string, where tokens should be detected.
+     * @param array[] $map    A map of token codes to their representations.
+     *                        The key is token code.
+     *                        The value is an array of possible representations.
+     *
      * @return string All tokens found in the string.
      */
     protected function _detectTokens($string, $map)
     {
-        $d = '!';
+        $d          = '!';
         $dictionary = [];
         foreach ($map as $_token => $_values) {
             foreach ($_values as $_value) {
@@ -70,7 +71,7 @@ abstract class AbstractThemeStatus extends AbstractOutputBase
         }
 
         // Sort representations by longest first
-        uksort($dictionary, function($a, $b) {
+        uksort($dictionary, function ($a, $b) {
             $lenA = strlen($a);
             $lenB = strlen($b);
 
@@ -85,9 +86,9 @@ abstract class AbstractThemeStatus extends AbstractOutputBase
 
         $detected = [];
         foreach ($dictionary as $_value => $_token) {
-            $count = 0;
+            $count   = 0;
             $pattern = $d . preg_quote($_value, $d) . $d . 'm';
-            $string = preg_replace($pattern, '', $string, 1, $count);
+            $string  = preg_replace($pattern, '', $string, 1, $count);
             if ($count) {
                 $detected[$_token] = $_token;
             }
@@ -110,8 +111,7 @@ abstract class AbstractThemeStatus extends AbstractOutputBase
         $status = Model\ThemeInterface::STATUS_UNKNOWN;
         if (in_array(Model\ThemeInterface::STATUS_ACTIVE, $set, true)) {
             $status = Model\ThemeInterface::STATUS_ACTIVE;
-        }
-        elseif (in_array(Model\ThemeInterface::STATUS_INACTIVE, $set, true)) {
+        } elseif (in_array(Model\ThemeInterface::STATUS_INACTIVE, $set, true)) {
             $status = Model\ThemeInterface::STATUS_INACTIVE;
         }
 

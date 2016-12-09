@@ -39,11 +39,11 @@ class ThemeStatusMultiple extends AbstractThemeStatus
                 throw new ParsingException(sprintf('%1$s: line %2$d format not recognized: %3$s', $err, $_idx, $_line));
             }
 
-            $statusSet  = $this->_normalizeStatusString($parts[0]);
-            $slug    = trim($parts[1]);
-            $version = trim($parts[2]);
+            $statusSet = $this->_normalizeStatusString($parts[0]);
+            $slug      = trim($parts[1]);
+            $version   = trim($parts[2]);
 
-            $status = $this->_getStatusFromSet($statusSet);
+            $status       = $this->_getStatusFromSet($statusSet);
             $updateStatus = $this->_getUpdateStatusFromSet($statusSet);
 
             $info[$slug] = $this->_createTheme([

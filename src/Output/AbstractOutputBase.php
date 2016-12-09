@@ -12,7 +12,7 @@ abstract class AbstractOutputBase extends AbstractOutput implements OutputInterf
     /**
      * @since [*next-version*]
      *
-     * @param type $text
+     * @param string|mixed $text The output.
      */
     public function __construct($text)
     {
