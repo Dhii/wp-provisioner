@@ -4,6 +4,7 @@ namespace Dhii\WpProvision\Wp;
 
 use UnexpectedValueException;
 use Dhii\WpProvision\Command;
+use Dhii\WpProvision\Output;
 
 /**
  * Description of AbstractCommand.
