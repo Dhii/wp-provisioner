@@ -126,7 +126,9 @@ class ThemeTest extends \Xpmock\TestCase
         $this->assertEquals(Model\ThemeInterface::STATUS_INACTIVE, $theme->getStatus(), 'Incorrect theme status determined');
         $this->assertFalse($theme->isActive(), 'Incorrect theme activity determined');
         $this->assertTrue($theme->isInstalled(), 'Incorrect theme presence determined');
-        $this->assertEquals('1.3', $theme->getVersion(), 'Incorrect theme version determined');
+        $this->assertFalse($theme->isUpdateAvailable(), 'Incorrect theme update availability determined');
+        $this->assertEquals(Model\ThemeInterface::STATUS_UNKNOWN, $theme->getUpdateStatus(), 'Incorrect theme update status determined');
+        $this->assertRegExp('!([\d]{1,3})\.([\d]{1,3})(\.[\d]{1,3})?!mi', $theme->getVersion(), 'Incorrect theme version determined');
         $this->assertEquals('the WordPress team', $theme->getAuthor(), 'Incorrect theme author determined');
         $this->assertEquals($slug, $theme->getSlug(), 'Incorrect theme slug determined');
     }
@@ -169,7 +171,7 @@ class ThemeTest extends \Xpmock\TestCase
         $this->assertEquals(Model\ThemeInterface::STATUS_INACTIVE, $theme->getStatus(), 'Incorrect theme status determined');
         $this->assertFalse($theme->isActive(), 'Incorrect theme activity determined');
         $this->assertTrue($theme->isInstalled(), 'Incorrect theme presence determined');
-        $this->assertEquals('1.3', $theme->getVersion(), 'Incorrect theme version determined');
+        $this->assertRegExp('!([\d]{1,3})\.([\d]{1,3})(\.[\d]{1,3})?!mi', $theme->getVersion(), 'Incorrect theme version determined');
         $this->assertEquals($slug, $theme->getSlug(), 'Incorrect theme slug determined');
 
         $slug = 'twentyfifteen';
@@ -178,7 +180,9 @@ class ThemeTest extends \Xpmock\TestCase
         $this->assertEquals(Model\ThemeInterface::STATUS_ACTIVE, $theme->getStatus(), 'Incorrect theme status determined');
         $this->assertTrue($theme->isActive(), 'Incorrect theme activity determined');
         $this->assertTrue($theme->isInstalled(), 'Incorrect theme presence determined');
-        $this->assertEquals('1.6', $theme->getVersion(), 'Incorrect theme version determined');
+        $this->assertTrue($theme->isUpdateAvailable(), 'Incorrect theme update availability determined');
+        $this->assertEquals(Model\ThemeInterface::UPDATE_AVAILABLE, $theme->getUpdateStatus(), 'Incorrect theme version determined');
+        $this->assertRegExp('!([\d]{1,3})\.([\d]{1,3})(\.[\d]{1,3})?!mi', $theme->getVersion(), 'Incorrect theme version determined');
         $this->assertEquals($slug, $theme->getSlug(), 'Incorrect theme slug determined');
     }
 
