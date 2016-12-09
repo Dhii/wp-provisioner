@@ -19,8 +19,8 @@ class ActivateSingleTheme extends AbstractOutputBase
         $message = $this->_createStatusMessage($output);
 
         return [
-            self::K_HEADER => $output,
-            self::K_BODY   => $output,
+            self::K_HEADER => (string) $output,
+            self::K_BODY   => (string) $output,
             self::K_FOOTER => null,
             self::K_DATA   => $message,
         ];
