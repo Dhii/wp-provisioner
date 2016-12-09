@@ -27,6 +27,7 @@ class ThemeStatusSingle extends AbstractThemeStatus
         $kSlug    = ThemeInterface::K_SLUG;
         $kVersion = ThemeInterface::K_VERSION;
         $kStatus  = ThemeInterface::K_STATUS;
+        $kUpdates = ThemeInterface::K_UPDATES;
 
         $matches = [];
         if (!preg_match('!Theme ([^\s]+) details!', $header, $matches)) {
@@ -52,7 +53,27 @@ class ThemeStatusSingle extends AbstractThemeStatus
         }
 
         $info[$kSlug]   = $slug;
-        $info[$kStatus] = $this->_normalizeStatusString($info[$kStatus]);
+
+        $stati = $this->_normalizeStatusString($info[$kStatus]);
+        $info[$kStatus] = $this->_getStatusFromSet($stati);
+
+        $versionString = $info[$kVersion];
+        $versionPieces = explode('(', $versionString);
+        // The version number itself
+        if (isset($versionPieces[0])) {
+            $info[$kVersion] = trim($versionPieces[0]);
+        }
+
+        $updateStatus = ThemeInterface::STATUS_UNKNOWN;
+        if (isset($versionPieces[1])) {
+            $matches = [];
+            preg_match('!update ([\w]*)!mi', $versionPieces[1], $matches);
+            if (count($matches[1])) {
+                $updateStati = $this->_normalizeStatusString($matches[1]);
+                $updateStatus = $this->_getUpdateStatusFromSet($updateStati);
+            }
+        }
+        $info[$kUpdates] = $updateStatus;
 
         $info = [$slug => $this->_createTheme($info)];
         $info = [
@@ -63,28 +84,5 @@ class ThemeStatusSingle extends AbstractThemeStatus
         ];
 
         return $info;
-    }
-
-    /**
-     * Converts a status string into one of the defined representations.
-     *
-     * @since [*next-version*]
-     *
-     * @param string $status One of the STATUS_* class constants.
-     */
-    protected function _normalizeStatusString($status)
-    {
-        $origStatus = $status;
-        $status     = strtolower(trim($status));
-
-        if (in_array($status, ['a', 'active'], true)) {
-            $status = ThemeInterface::STATUS_ACTIVE;
-        } elseif (in_array($status, ['i', 'inactive', true])) {
-            $status = ThemeInterface::STATUS_INACTIVE;
-        } else {
-            $status = $origStatus;
-        }
-
-        return $status;
     }
 }

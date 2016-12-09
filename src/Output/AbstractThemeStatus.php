@@ -97,6 +97,49 @@ abstract class AbstractThemeStatus extends AbstractOutputBase
     }
 
     /**
+     * Derive a theme active status from a theme status set.
+     *
+     * @since [*next-version*]
+     *
+     * @param string[] $set An array of theme stati codes.
+     *
+     * @return string The theme active status string.
+     */
+    protected function _getStatusFromSet($set)
+    {
+        $status = Model\ThemeInterface::STATUS_UNKNOWN;
+        if (in_array(Model\ThemeInterface::STATUS_ACTIVE, $set, true)) {
+            $status = Model\ThemeInterface::STATUS_ACTIVE;
+        }
+        elseif (in_array(Model\ThemeInterface::STATUS_INACTIVE, $set, true)) {
+            $status = Model\ThemeInterface::STATUS_INACTIVE;
+        }
+
+        return $status;
+    }
+
+    /**
+     * Derive a theme active update from a theme status set.
+     *
+     * @since [*next-version*]
+     *
+     * @param string[] $set An array of theme stati codes.
+     *
+     * @return string The theme update status string.
+     */
+    protected function _getUpdateStatusFromSet($set)
+    {
+        $updateStatus = Model\ThemeInterface::STATUS_UNKNOWN;
+        if (in_array(Model\ThemeInterface::STATUS_UPDATE, $set, true)) {
+            $updateStatus = Model\ThemeInterface::UPDATE_AVAILABLE;
+        } elseif (in_array(Model\ThemeInterface::UPDATE_UNAVAILABLE, $set, true)) {
+            $updateStatus = Model\ThemeInterface::UPDATE_UNAVAILABLE;
+        }
+
+        return $updateStatus;
+    }
+
+    /**
      * Creates a new theme object.
      *
      * @since [*next-version*]

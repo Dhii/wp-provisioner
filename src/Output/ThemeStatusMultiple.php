@@ -43,18 +43,8 @@ class ThemeStatusMultiple extends AbstractThemeStatus
             $slug    = trim($parts[1]);
             $version = trim($parts[2]);
 
-            $status = ThemeInterface::STATUS_UNKNOWN;
-            if (in_array(ThemeInterface::STATUS_ACTIVE, $statusSet, true)) {
-                $status = ThemeInterface::STATUS_ACTIVE;
-            }
-            elseif (in_array(ThemeInterface::STATUS_INACTIVE, $statusSet, true)) {
-                $status = ThemeInterface::STATUS_INACTIVE;
-            }
-
-            $updateStatus = ThemeInterface::STATUS_UNKNOWN;
-            if (in_array(ThemeInterface::STATUS_UPDATE, $statusSet, true)) {
-                $updateStatus = ThemeInterface::UPDATE_AVAILABLE;
-            }
+            $status = $this->_getStatusFromSet($statusSet);
+            $updateStatus = $this->_getUpdateStatusFromSet($statusSet);
 
             $info[$slug] = $this->_createTheme([
                 $kSlug    => $slug,
