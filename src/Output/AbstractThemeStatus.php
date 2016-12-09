@@ -87,7 +87,7 @@ abstract class AbstractThemeStatus extends AbstractOutputBase
         foreach ($dictionary as $_value => $_token) {
             $count = 0;
             $pattern = $d . preg_quote($_value, $d) . $d . 'm';
-            preg_replace($pattern, '', $string, 1, $count);
+            $string = preg_replace($pattern, '', $string, 1, $count);
             if ($count) {
                 $detected[$_token] = $_token;
             }
