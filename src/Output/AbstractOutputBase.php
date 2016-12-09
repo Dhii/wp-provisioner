@@ -139,6 +139,15 @@ abstract class AbstractOutputBase extends AbstractOutput implements OutputInterf
         }
     }
 
+    /**
+     * Creates a parser that will attempt to parse output in case the primary algorithm fails.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $output The output to pass to the parser.
+     *
+     * @return StatusMessage The new parser instance.
+     */
     protected function _createFallbackParser($output)
     {
         return new StatusMessage($output);

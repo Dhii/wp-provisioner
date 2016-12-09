@@ -9,11 +9,26 @@ namespace Dhii\WpProvision\Output;
  */
 class StatusMessage implements StatusMessageInterface
 {
+    /**
+     * @since [*next-version*]
+     */
     const K_STATUS = 'status';
-    const K_TEXT   = 'text';
+    /**
+     * @since [*next-version*]
+     */
+    const K_TEXT = 'text';
 
+    /**
+     * @since [*next-version*]
+     */
     protected $text;
+    /**
+     * @since [*next-version*]
+     */
     protected $message;
+    /**
+     * @since [*next-version*]
+     */
     protected $status;
 
     /**

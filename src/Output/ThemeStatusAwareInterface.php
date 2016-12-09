@@ -9,5 +9,12 @@ namespace Dhii\WpProvision\Output;
  */
 interface ThemeStatusAwareInterface
 {
+    /**
+     * Retrieve the status code of this instance.
+     *
+     * @since [*next-version*]
+     *
+     * @return string The status code.
+     */
     public function getStatus();
 }

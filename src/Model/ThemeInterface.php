@@ -9,20 +9,59 @@ namespace Dhii\WpProvision\Model;
  */
 interface ThemeInterface
 {
-    const K_SLUG    = 'slug';
-    const K_NAME    = 'name';
-    const K_STATUS  = 'status';
+    /**
+     * @since [*next-version*]
+     */
+    const K_SLUG = 'slug';
+    /**
+     * @since [*next-version*]
+     */
+    const K_NAME = 'name';
+    /**
+     * @since [*next-version*]
+     */
+    const K_STATUS = 'status';
+    /**
+     * @since [*next-version*]
+     */
     const K_VERSION = 'version';
+    /**
+     * @since [*next-version*]
+     */
     const K_UPDATES = 'updates';
-    const K_AUTHOR  = 'author';
+    /**
+     * @since [*next-version*]
+     */
+    const K_AUTHOR = 'author';
 
-    const STATUS_ACTIVE      = 'active';
-    const STATUS_INACTIVE    = 'inactive';
-    const STATUS_UNKNOWN     = 'unknown';
+    /**
+     * @since [*next-version*]
+     */
+    const STATUS_ACTIVE = 'active';
+    /**
+     * @since [*next-version*]
+     */
+    const STATUS_INACTIVE = 'inactive';
+    /**
+     * @since [*next-version*]
+     */
+    const STATUS_UNKNOWN = 'unknown';
+    /**
+     * @since [*next-version*]
+     */
     const STATUS_UNINSTALLED = 'uninstalled';
-    const STATUS_UPDATE      = 'update';
+    /**
+     * @since [*next-version*]
+     */
+    const STATUS_UPDATE = 'update';
 
-    const UPDATE_AVAILABLE   = 'available';
+    /**
+     * @since [*next-version*]
+     */
+    const UPDATE_AVAILABLE = 'available';
+    /**
+     * @since [*next-version*]
+     */
     const UPDATE_UNAVAILABLE = 'unavailable';
 
     /**

@@ -9,10 +9,22 @@ namespace Dhii\WpProvision\Output;
  */
 interface OutputInterface
 {
+    /**
+     * @since [*next-version*]
+     */
     const K_HEADER = 'header';
+    /**
+     * @since [*next-version*]
+     */
     const K_FOOTER = 'footer';
-    const K_BODY   = 'body';
-    const K_DATA   = 'data';
+    /**
+     * @since [*next-version*]
+     */
+    const K_BODY = 'body';
+    /**
+     * @since [*next-version*]
+     */
+    const K_DATA = 'data';
 
     /**
      * Retrieve the header of the output.

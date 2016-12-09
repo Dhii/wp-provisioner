@@ -11,11 +11,26 @@ use Dhii\WpProvision\Model;
  */
 interface ThemeInterface
 {
-    const K_NAME    = 'name';
-    const K_STATUS  = 'status';
+    /**
+     * @since [*next-version*]
+     */
+    const K_NAME = 'name';
+    /**
+     * @since [*next-version*]
+     */
+    const K_STATUS = 'status';
+    /**
+     * @since [*next-version*]
+     */
     const K_VERSION = 'version';
-    const K_AUTHOR  = 'author';
-    const K_SLUG    = 'slug';
+    /**
+     * @since [*next-version*]
+     */
+    const K_AUTHOR = 'author';
+    /**
+     * @since [*next-version*]
+     */
+    const K_SLUG = 'slug';
 
     /**
      * Provides access to the `activate` subcommand.

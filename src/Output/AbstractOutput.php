@@ -9,10 +9,25 @@ namespace Dhii\WpProvision\Output;
  */
 abstract class AbstractOutput
 {
+    /**
+     * @since [*next-version*]
+     */
     protected $text;
+    /**
+     * @since [*next-version*]
+     */
     protected $header;
+    /**
+     * @since [*next-version*]
+     */
     protected $body;
+    /**
+     * @since [*next-version*]
+     */
     protected $footer;
+    /**
+     * @since [*next-version*]
+     */
     protected $data;
 
     /**

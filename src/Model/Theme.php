@@ -16,11 +16,25 @@ class Theme implements ThemeInterface
     protected $updateStatus;
     protected $author;
 
+    /**
+     * @since [*next-version*]
+     *
+     * @param mixed[] $data Any combination of the K_* keys.
+     */
     public function __construct(array $data = [])
     {
         $this->_assignData($data);
     }
 
+    /**
+     * Looks for recognized data keys, and sets internal data members to corresponding values.
+     *
+     * @since [*next-version*]
+     *
+     * @param mixed[] $data Any combination of the K_* keys.
+     *
+     * @return Theme This instance.
+     */
     protected function _assignData(array $data)
     {
         isset($data[self::K_NAME]) &&
@@ -41,7 +55,7 @@ class Theme implements ThemeInterface
         isset($data[self::K_AUTHOR]) &&
             $this->_setAuthor($data[self::K_AUTHOR]);
 
-        return$this;
+        return $this;
     }
 
     /**
@@ -54,6 +68,15 @@ class Theme implements ThemeInterface
         return $this->name;
     }
 
+    /**
+     * Sets the theme name.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $name The name of the theme.
+     *
+     * @return Theme
+     */
     protected function _setName($name)
     {
         $this->name = $name;
@@ -71,6 +94,15 @@ class Theme implements ThemeInterface
         return $this->slug;
     }
 
+    /**
+     * Sets the slug of the theme.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $slug The theme slug.
+     *
+     * @return Theme This instance.
+     */
     protected function _setSlug($slug)
     {
         $this->slug = $slug;
@@ -88,6 +120,15 @@ class Theme implements ThemeInterface
         return $this->status;
     }
 
+    /**
+     * Sets the theme status.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $status The code of this theme's status.
+     *
+     * @return Theme This instance.
+     */
     protected function _setStatus($status)
     {
         $this->status = $status;
@@ -105,6 +146,15 @@ class Theme implements ThemeInterface
         return $this->updateStatus;
     }
 
+    /**
+     * Sets the theme's update status.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $updateStatus The code of this theme's update status.
+     *
+     * @return Theme This instance.
+     */
     protected function _setUpdateStatus($updateStatus)
     {
         $this->updateStatus = $updateStatus;
@@ -122,6 +172,15 @@ class Theme implements ThemeInterface
         return $this->version;
     }
 
+    /**
+     * Sets this theme's version.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $version The version number string.
+     *
+     * @return Theme This instance.
+     */
     protected function _setVersion($version)
     {
         $this->version = $version;
@@ -139,6 +198,15 @@ class Theme implements ThemeInterface
         return $this->author;
     }
 
+    /**
+     * Sets the theme's author.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $author The author's name.
+     *
+     * @return Theme This instance.
+     */
     protected function _setAuthor($author)
     {
         $this->author = $author;
